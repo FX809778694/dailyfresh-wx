@@ -1,0 +1,70 @@
+/* 地址列表 */
+.address .content {
+  width: calc(100% - 150rpx);
+}
+
+/* 新建地址按钮 */
+
+.addBtn {
+  position: fixed;
+  bottom: 20rpx;
+  left: 20rpx;
+  width: 690rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #3AB44B;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+.address-item{
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.addr-tag{
+  width: 76rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  border-radius: 4rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  font-weight: 400;
+  margin-left: 20rpx;
+}
+.tinyint-tag{
+  background: #348DFF;
+}
+.default-tag{
+  background: #36B546;
+}
+
+
+.no-address-img{
+  width: 260rpx!important;
+  height: 200rpx!important;
+  display: inline-block;
+}
+.addBtn-no-data{
+  width: 200rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  background: #3AB44B;
+  border-radius: 8rpx;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: 400;
+  margin: 0 auto;
+  margin-top: 30rpx;
+}
+
+.address-username{
+  width: 130rpx;
+  display: inline-block;
+  color: #999999;
+}
+.address-phone{
+  color: #999999;
+}

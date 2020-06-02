@@ -1,0 +1,139 @@
+.btn{
+  padding: 0 20rpx;
+  font-size: 24rpx;
+}
+
+.goodsContent{
+  margin: 0 20rpx;
+  width: calc(100% - 270rpx)
+}
+
+.goods-price{
+  display: flex;
+  justify-content: flex-end;
+}
+.price-r{
+  font-size: 24rpx;
+  color: #666;
+  margin-left: 12rpx;
+  padding-top: 6rpx;
+}
+
+.map-wrap{
+  padding: 10rpx 20rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  margin: 20rpx;
+}
+
+
+.schedule-wrap{
+  width: 710rpx;
+  background: #fff;
+  padding: 30rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  border-radius: 8rpx;
+}
+
+.schedule-title{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: 400;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #ECECEC;
+}
+
+.item-wrap{
+  border-left: 1rpx solid #E4E4E4;
+  padding-left: 15px;
+  margin-top: 10px;
+  margin-left: 5px;
+  position: relative;
+}
+
+.con-item{
+  margin-top: 15px;
+  position: relative;
+}
+.circle-icon{
+  position: absolute;
+  left: -21px;
+  top: 4px;
+  background: #C6C6C6;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.cover-icon-top{
+  width: 4px;
+  background: #fff;
+  height: 4px;
+  position: absolute;
+  left: -17px;
+  top: 0;
+  z-index: 9999;
+}
+.cover-icon-bottom{
+  width: 4px;
+  height: 22px;
+  background: #fff;
+  position: absolute;
+  left: -17px;
+  bottom: 0;
+  z-index: 9999;
+}
+
+.con-item-p{
+  font-size: 28rpx;
+  color: #D4D4D4;
+  font-weight: 400;
+  line-height: 40rpx;
+}
+.con-item-time{
+  font-size: 24rpx;
+  color: #D4D4D4;
+  line-height: 34rpx;
+  font-weight: 400;
+  margin-top: 4rpx;
+}
+
+.active{
+  color: #3AB44B;
+}
+
+.active-circle-icon{
+  position: absolute;
+  left: -21px;
+  top: 4px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1rpx solid #36B546;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.circle-icon-con{
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #36B546;
+}
+
+.view-more{
+  color: #333333;
+  font-size: 24rpx;
+  font-weight: 400;
+  text-align: center;
+  line-height: 60rpx;
+  margin-top: 10rpx;
+}
+.iconshouhuoxuanze{
+  font-size: 24rpx;
+  margin-left: 10rpx;
+  display: inline-block;
+  transform: rotate(90deg);
+}

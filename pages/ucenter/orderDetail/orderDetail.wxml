@@ -1,0 +1,178 @@
+<view class="padding-top-sm padding-left text-xl text-bold">{{orderInfo.orderStatusText}}</view>
+<!-- 订单信息，支付按钮 -->
+<view class="bg-white radius-card margin-sm padding-lr-sm">
+  <!--
+      @ status == 101 "未付款";
+      @ status == 102 "已取消";
+      @ status == 103 "已取消(系统)";
+      @ status == 200 "已付款团购";
+      @ status == 201 "已付款";
+      @ status == 202 "订单取消，退款中";
+      @ status == 203 "已退款";
+      @ status == 204 "已超时团购";
+      @ status == 301 "已发货";
+      @ status == 401 "已收货";
+      @ status == 402 "已收货(系统)";
+   -->
+  <view class="padding-tb-sm solid-bottom" wx:if="{{orderInfo.orderStatus === 101}}">
+    <view class="padding-bottom-xs">剩余支付时间为：
+      <text class="text-green text-lg text-bold">{{countDown}}</text>
+    </view>
+    <view class="hint">{{orderInfo.orderSaveTime}}分钟内未支付，订单将自动取消</view>
+  </view>
+  <view class="padding-tb-sm solid-bottom" wx:if="{{orderInfo.orderStatus === 102 || orderInfo.orderStatus === 103}}">
+    <view class="hint">订单未支付已取消</view>
+  </view>
+  <view class="padding-tb-sm solid-bottom" wx:if="{{orderInfo.orderStatus === 201}}">
+    <view class="hint">订单已支付，请耐心等待商品配送</view>
+  </view>
+  <view class="padding-tb-sm solid-bottom" wx:if="{{orderInfo.orderStatus === 301}}">
+    <view class="hint">订单已发货，配送小哥正在飞奔向您赶来~</view>
+  </view>
+  <view class="padding-tb-sm solid-bottom" wx:if="{{orderInfo.orderStatus === 401 || orderInfo.orderStatus === 402}}">
+    <view class="hint">感谢您对我们的信任，期待再次光临</view>
+  </view>
+  <view class="flex justify-between align-center padding-tb-sm">
+    <view wx:if="{{orderInfo.orderStatus !== 102 && orderInfo.orderStatus !== 103}}">实付：
+      <text class="text-price text-orange text-lg">{{orderInfo.actualPrice}}</text>
+    </view>
+    <view wx:else></view>
+    <view>
+      <view class="btn line-grey margin-left-xs" bindtap="cancelOrder" wx:if="{{handleOption.cancel}}">取消订单</view>
+      <view class="btn line-green margin-left-xs" bindtap="confirmOrder" wx:if="{{handleOption.confirm}}">确认收货</view>
+      <view class="btn line-grey margin-left-xs" bindtap="refundOrder" wx:if="{{handleOption.refund}}">申请退款</view>
+      <view class="btn line-green margin-left-xs" bindtap="evaluate" wx:if="{{handleOption.rebuy}}" data-orderId="{{orderId}}">评价</view>
+      <view class="btn bg-green radius margin-left-xs" bindtap="onceOrder" data-orderId="{{orderId}}">再来一单</view>
+      <view class="btn bg-green radius margin-left-xs radius" bindtap="payOrder" wx:if="{{handleOption.pay}}">去付款</view>
+    </view>
+  </view>
+</view>
+
+<!-- 订单状态 -->
+<view class="schedule-wrap">
+
+  <view class="schedule-title">
+    订单状态
+  </view>
+
+  <view class="item-wrap">
+
+    <view
+      class="con-item"
+      wx:for="{{statusData}}"
+      wx:key="index"
+      wx:for-item="item">
+      <view class="con-item-p {{index == 0 ? 'active' : ''}}">{{item.orderRemarks}}</view>
+      <view class="con-item-time {{index == 0 ? 'active' : ''}}">{{item.createTime}}</view>
+      <view class="circle-icon" wx:if="{{index !== 0}}"></view>
+      <view class="active-circle-icon" wx:if="{{index == 0}}">
+        <view class="circle-icon-con"></view>
+      </view>
+      <view class="cover-icon-top" wx:if="{{index == 0}}"></view>
+    </view>
+
+  </view>
+  <view class="view-more" wx:if="{{allStatusData.length > 3 && showMoreBtn}}" bindtap="showMoreData">查看更多状态<text class="iconfont iconshouhuoxuanze"></text></view>
+
+</view>
+
+<!--地图容器-->
+<!--wx:if="{{orderInfo.orderStatus === 301}}"-->
+<view class="map-wrap" bindtap="enterDistribution" wx:if="{{orderInfo.orderStatus === 301}}">
+  <map
+    id="map"
+    style="width:100%; height:140px;"
+    data-delivery-id="{{orderInfo.deliveryId}}"
+    data-address-lng="{{orderInfo.lng}}"
+    data-address-lat="{{orderInfo.lat}}"
+    data-lng="{{longitudeDeliver}}"
+    data-lat="{{latitudeDeliver}}"
+    bindtap="enterDistribution"
+    longitude="{{longitudeDeliver}}"
+    latitude="{{latitudeDeliver}}"
+    markers="{{markers}}"
+    scale='{{scale}}'>
+  </map>
+</view>
+
+
+<!-- 配送信息 -->
+<view class="bg-white radius-card margin-sm padding-lr-sm">
+  <view class="flex justify-between padding-tb-sm solid-bottom" wx:if="{{orderInfo.delivery_status == 2}}">
+    <view>配送时间</view>
+    <view>
+      <text class="text-green">{{orderInfo.delivery_finish_time}}</text> 送达
+    </view>
+  </view>
+  <view class="flex justify-between padding-tb-sm solid-bottom" wx:else>
+    <view>预计配送时间</view>
+    <view>
+      <text class="text-green">{{orderInfo.showTips}}</text>
+    </view>
+  </view>
+  <view class="flex justify-between padding-tb-sm solid-bottom">
+    <view>配送地址</view>
+    <view>
+      <view class="padding-bottom-xs">{{orderInfo.address}}</view>
+      <view class="text-right">
+        <text>{{orderInfo.consignee}}</text>
+        <text class="padding-left-sm">{{orderInfo.mobile}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="flex justify-between padding-tb-sm">
+    <view>备注</view>
+    <view>{{orderInfo.message}}</view>
+  </view>
+</view>
+
+<!-- 商品信息 -->
+<view class="bg-white radius-card margin-sm padding-lr-sm">
+  <view class="padding-tb-sm">商品信息</view>
+  <view class="margin-tb-sm flex align-center" wx:for="{{orderGoods}}" wx:key="id">
+    <view class="avatar xl margin-l-sm">
+      <image src="{{swiperImgPrefix + item.picUrl}}"></image>
+    </view>
+    <view class="goodsContent">
+      <view>{{item.goodsName}}</view>
+      <view>
+        <text class="text-xs">X</text> {{item.number}}
+      </view>
+    </view>
+    <view class="goods-price">
+      <view class="text-price text-orange text-lg">{{item.price}}</view>
+      <view class="text-price text-orange text-lg text-line price-r">{{item.marketPrice}}</view>
+    </view>
+  </view>
+
+  <!-- 订单价格信息 -->
+  <view class="padding-tb">
+    <view class="flex justify-between padding-tb-sm">
+      <view>商品金额</view>
+      <view class="text-price">{{orderInfo.goodsPrice}}</view>
+    </view>
+    <view class="flex justify-between padding-tb-sm">
+      <view>优惠券</view>
+      <view class="text-price">{{orderInfo.couponPrice}}</view>
+    </view>
+    <view class="flex justify-between padding-tb-sm">
+      <view>配送费</view>
+      <view class="text-price">{{orderInfo.freightPrice}}</view>
+    </view>
+    <view class="flex justify-between padding-tb-sm">
+      <view>实付金额</view>
+      <view class="text-price">{{orderInfo.actualPrice}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 订单编号 & 订单时间 -->
+<view class="bg-white radius-card margin-sm padding-sm text-grey">
+  <view class="padding-tb-xs">
+    <text>订单编号：{{orderInfo.orderSn}}</text>
+    <text class="margin-left btn line-green sm" bindtap="textPaste">复制</text>
+  </view>
+  <view class="padding-tb-xs">
+   下单时间：{{orderInfo.addTime}}
+  </view>
+</view>

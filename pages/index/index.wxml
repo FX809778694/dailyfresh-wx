@@ -1,0 +1,255 @@
+
+<view id="home">
+  <scroll-view
+    class="scroll-shop-list"
+    scroll-y
+    bindscroll="indexScrollHandle"
+    bindscrolltolower="indexScrollBottom"
+    scroll-top="{{topNum}}"
+    >
+
+    <!-- 搜索banner部分 -->
+    <view class="index-top-bg">
+      <image class="top-bg-image" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/banner-bg.png"></image>
+
+      <!-- 搜索 -->
+      <view class="header-search padding-lr" id="header">
+        <navigator url="/pages/search/search" hover-class="none">
+          <view class="bar">
+            <view class="search-form round">
+              <text class="iconfont iconsousuo search-icon"></text>
+              <input disabled="true" type="text" placeholder="发现新东西……" confirm-type="search"></input>
+            </view>
+          </view>
+        </navigator>
+      </view>
+
+      <!-- banner -->
+      <swiper class="index-banner" id="banner" indicator-color="#fff" indicator-active-color="#36B546" indicator-dots="true" autoplay="true" interval="3000" duration="200" class="padding-lr-sm">
+        <swiper-item class="swiper-item-img" wx:for="{{banner}}" wx:key="id">
+            <image src="{{swiperImgPrefix + item.url}}" background-size="cover" data-link="{{item.link}}" bindtap="goAdLink"></image>
+        </swiper-item>
+      </swiper>
+
+    </view>
+
+
+
+    <!-- 营销文字 -->
+    <view class="fast-text-wrap">
+      <view class="text-item">
+        <text class="iconfont iconzuikuai"></text>
+        冷链极速配送
+      </view>
+      <view class="text-item">
+        <text class="iconfont iconquanqiu"></text>
+        原产地直采
+      </view>
+      <view class="text-item">
+        <text class="iconfont iconpingjia"></text>
+        天天平价安心购
+      </view>
+    </view>
+
+    <!-- 分类图入口 -->
+    <view class="category-entry" bindtap="useCouponHandle">
+      <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/category-index.png"></image>
+    </view>
+
+    <!-- 商品分类 -->
+    <view style="height: 360rpx" class="grid col-5 bg-white padding-top-sm margin-lr-sm margin-bottom-sm text-center" wx:if="{{goodsClassify.length > 0}}">
+      <view wx:for="{{goodsClassify}}" wx:key="id">
+        <view bindtap="goClassify" data-id="{{item.id}}">
+          <view class="avatar lg round">
+            <image src="{{swiperImgPrefix + item.iconUrl}}"></image>
+          </view>
+          <view class="shop-classify-title text-sm text-grey margin-tb-sm">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!--  精选菜谱  -->
+    <view class="food-menu">
+      <text>精选菜谱</text>
+      <view class="food-menu-con">
+        <image
+          src="{{item.img}}"
+          wx:for="{{delicacyListData}}"
+          wx:for-index="index"
+          wx:for-item="item"
+          wx:key="index"
+          data-id="{{item.cookId}}"
+          bindtap="enterDelicacyDetail"></image>
+      </view>
+    </view>
+
+    <!-- 秒杀入口  -->
+    <view class="index-skill" wx:if="{{skillShopList.length > 0}}">
+      <view class="skill-top">
+        <view class="skill-title">
+          <text style="margin-right: 20rpx; font-weight: bold">限时抢购</text>
+          <text class="clock-con-item">{{clockHr}}</text>
+          <text class="clock-con-colon">:</text>
+          <text class="clock-con-item">{{clockMin}}</text>
+          <text class="clock-con-colon">:</text>
+          <text class="clock-con-item">{{clockSec}}</text>
+          <text class="clock-con-colon">:</text>
+          <text class="clock-con-item" style="background: #3AB44B">{{microSec}}</text>
+        </view>
+        <view class="more-icon" bindtap="enterSkillPage">更多<text class="iconfont iconquanbudingdan skill-more-icon"></text></view>
+      </view>
+      <view class="skill-shop-wrap">
+        <view class="shop-wrap-item" wx:for="{{skillShopList}}" wx:for-index="index" wx:for-item="item" wx:key="index" data-goodsId="{{item.goodsId}}" bindtap="enterGoodDetail">
+          <image src="{{item.picUrl}}"></image>
+          <text class="shop-tip">已抢{{item.goodsMaxNumber - item.goodsStock}}件</text>
+          <text class="price-big">￥{{item.goodsFlashPrice}}</text>
+          <text class="price-small">￥{{item.retailPrice}}</text>
+          <view class="skill-shop-specifications">抢购中</view>
+          <view class="skill-shop-bin">抢</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 热销商品 -->
+    <view class="hot-sale">
+      <view class="hot-sale-title">
+        <text class="iconfont iconrexiaobang"></text>
+        <text style="margin-right: 20rpx; margin-left: 6rpx">热销榜</text>
+      </view>
+      <view class="more-icon" bindtap="enterClassify">更多<text class="iconfont iconquanbudingdan skill-more-icon"></text></view>
+    </view>
+    <view style="height: 400rpx" class="bg-white margin-lr-sm margin-bottom-sm" id="hotGoods">
+      <scroll-view scroll-x scroll-with-animation class="scroll-view">
+        <view wx:for="{{hotGoods.list}}" wx:key="hotGoods" class="hot-sale-item padding item">
+          <navigator url="../goods/goods?id={{item.id}}" hover-class="none">
+            <image src="{{swiperImgPrefix + item.picUrl}}" mode="widthFix"></image>
+            <view class="margin-tb-sm name">{{item.name}}</view>
+            <view class="text-price text-orange text-lg">{{item.retailPrice}}</view>
+            <text class="text-price text-grey text-line">{{item.marketPrice}}</text>
+            <view class="no-num">NO.{{index + 1}}</view>
+          </navigator>
+          <view class="iconfont iconjian avatar" data-item-index="{{index}}" bindtap="hotAddCart">
+            <text class="tag badge bg-orange" wx:if="{{item.number}}">{{item.number}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 商品区域 -->
+    <view class="shop-list-wrap">
+
+      <view class="list-wrap-header">
+        <view class="list-wrap-fixed {{!fixedCategory ? 'fixed-category' : ''}}" id="fixed-header" wx:if="!clickSelectClassify">
+          <scroll-view class="scroll-header" scroll-x="true" style="width: 100%; height: 100%">
+            <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{0}}">
+              <view class="time-shop-t {{cateGoryActive === 0 ? 'active-shop-t' : ''}}">新品上市</view>
+              <view class="time-shop-b {{cateGoryActive === 0 ? 'active-shop-b' : ''}}">立即抢购</view>
+            </view>
+            <view class="scroll-shop-item" wx:for="{{goodsClassify}}" wx:key="id" bindtap="selectClassifyHandle" data-id="{{item.id}}">
+              <view class="time-shop-t {{cateGoryActive === item.id ? 'active-shop-t' : ''}}">{{item.name}}</view>
+              <view class="time-shop-b {{cateGoryActive === item.id ? 'active-shop-b' : ''}}">{{item.desc}}</view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+
+      <view class="list-wrap-con">
+        <view class="padding-lr-sm goodsList">
+          <view class="bg-white goods-list-item">
+            <view bindtap="goClassify" class="shop-big-img" data-id="{{shopListPicData.id}}" wx:if="{{cateGoryActive !== 0}}">
+              <image src="{{swiperImgPrefix + shopListPicData.picUrl}}" class="classifyImg"></image>
+            </view>
+            <view class="padding-wrap" wx:if="{{cateGoryActive !== 0}}"></view>
+            <view class="shop-list">
+              <view wx:for="{{shopListData}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="shop-list-item item">
+                <navigator url="../goods/goods?id={{item.id}}" hover-class="none">
+                  <view class="img">
+                    <image src="{{swiperImgPrefix + item.picUrl}}" mode="widthFix"></image>
+                    <image src="{{swiperImgPrefix + item.picUrl}}" class="animation {{item.displayFlag ? '' : 'on'}}" style="left: {{item.animationX}}px; top: {{item.animationY}}px;" mode="widthFix"></image>
+                  </view>
+                  <view class="margin-tb-sm name shop-name">{{item.name}}</view>
+                  <view>
+                    <text class="text-price text-orange text-lg">{{item.retailPrice}}</text>
+                    <text class="text-price text-grey text-line" style="margin-left: 20rpx">{{item.marketPrice}}</text>
+                  </view>
+                </navigator>
+
+                <view class="iconfont iconjian avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}" bindtap="addToCart">
+                  <text class="tag badge bg-orange" wx:if="{{value.number}}">{{item.number}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    <view class="nodata" wx:if="{{noData}}">没有更多数据啦</view>
+
+  </scroll-view>
+</view>
+
+<!-- 优惠券弹框 -->
+<!-- wx:if="{{hasLogin && couponTimeSign && couponModel && couponData.length > 0}}" -->
+<view class="index-coupon" wx:if="{{hasLogin && couponTimeSign && couponModel && couponData.length > 0}}">
+  <view class="index-coupon-con">
+    <image class="coupon-img" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/index-coupon.png"></image>
+
+    <scroll-view scroll-y class="item-content" style="width: 560rpx; height: 420rpx">
+
+      <view class="coupon-item" wx:for="{{couponData}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+        <view class="coupon-l">
+          <view class="l-price"><text style="font-size: 24rpx">￥</text>{{item.discount}}</view>
+          <view class="l-tip">满{{item.min}}元可用</view>
+        </view>
+        <view class="coupon-r">
+          <view class="r-title">{{item.name}}</view>
+          <view class="r-time" wx:if="{{item.timeType == 0}}">有效期为{{item.days}}天</view>
+          <view class="r-time" wx:else>{{item.startTime}} - {{item.endTime}}</view>
+          <!-- 半圆圈图标 -->
+          <view class="circle-icon circle-icon-top"></view>
+          <view class="circle-icon circle-icon-bottom"></view>
+        </view>
+        <view class="coupon-btn" data-item="{{item}}" data-index="{{index}}" bindtap="useCouponHandle">{{item.toUse == 1 ? '去领取' : '去使用'}}</view>
+      </view>
+
+    </scroll-view>
+
+    <view class="close-icon" bindtap="closeCouponModel"><text class="iconfont iconguanbi"></text></view>
+  </view>
+</view>
+
+<!--
+  新人优惠券弹框
+  新人优惠券 未登录进入首页弹出
+-->
+<view class="index-coupon" wx:if="{{newPeopleCouponModel && newPeopleCouponData.length > 0}}">
+  <view class="index-coupon-con">
+    <image class="coupon-img" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/index-coupon.png"></image>
+
+    <scroll-view scroll-y class="item-content" style="width: 560rpx; height: 420rpx">
+
+      <view class="coupon-item" wx:for="{{newPeopleCouponData}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+        <view class="coupon-l">
+          <view class="l-price"><text style="font-size: 24rpx">￥</text>{{item.discount}}</view>
+          <view class="l-tip">满{{item.min}}元可用</view>
+        </view>
+        <view class="coupon-r">
+          <view class="r-title">{{item.name}}</view>
+          <view class="r-time" wx:if="{{item.timeType == 0}}">有效期为{{item.days}}天</view>
+          <view class="r-time" wx:else>{{item.startTime}} - {{item.endTime}}</view>
+          <!-- 半圆圈图标 -->
+          <view class="circle-icon circle-icon-top"></view>
+          <view class="circle-icon circle-icon-bottom"></view>
+        </view>
+        <view class="coupon-btn" bindtap="goLogin">去领取</view>
+      </view>
+
+    </scroll-view>
+
+    <view class="close-icon" bindtap="closeNewPeopleCouponModel"><text class="iconfont iconguanbi"></text></view>
+  </view>
+</view>
+
+<backTop wx:if="{{showTopBtn}}" bindtoTopHandle="toTopHandle"></backTop>

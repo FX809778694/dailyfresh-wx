@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "美食社",
+  "usingComponents": {
+    "backTop": "/components/backTop/backTop"
+  }
+}

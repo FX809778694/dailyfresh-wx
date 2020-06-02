@@ -1,0 +1,37 @@
+
+page{
+  background: #fff;
+}
+
+.main-wrap{
+  padding: 0 30rpx;
+  background: #fff;
+  padding-bottom: 60rpx;
+}
+
+.header-title{
+  text-align: center;
+  color: #2C2C2C;
+  font-size: 30rpx;
+  margin-top: 30rpx;
+}
+.con-title{
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+.con-item{
+  color: #333333;
+  font-size: 24rpx;
+  line-height: 42rpx;
+}
+
+.margin-top-30{
+  margin-top: 30rpx;
+}
+.margin-left-20{
+  margin-left: 20rpx;
+}
+.margin-left-30{
+  margin-left: 30rpx;
+}

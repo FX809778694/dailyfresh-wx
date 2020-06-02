@@ -1,0 +1,193 @@
+/* 地址填写 */
+.address input, .address .input{
+  width: calc(100% - 150rpx)
+}
+
+/* 省市区地址联动 */
+.address .lastItem{
+  padding: 30rpx !important;
+}
+
+.region-select {
+  width: 100%;
+  height: 600rpx;
+  background: #fff;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  bottom: 0;
+}
+
+.region-select .hd {
+  height: 108rpx;
+  width: 100%;
+  border-bottom: 1px solid #f4f4f4;
+  padding: 46rpx 30rpx 0 30rpx;
+}
+
+.region-select .region-selected {
+  float: left;
+  height: 60rpx;
+  display: flex;
+}
+
+.region-select .region-selected .item {
+  max-width: 140rpx;
+  margin-right: 30rpx;
+  text-align: left;
+  line-height: 60rpx;
+  height: 100%;
+  color: #333;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.region-select .region-selected .item.disabled {
+  color: #999;
+}
+
+.region-select .region-selected .item.selected {
+  color: #b4282d;
+}
+
+.region-select .done {
+  float: right;
+  height: 60rpx;
+  width: 60rpx;
+  border: none;
+  background: #fff;
+  line-height: 60rpx;
+  text-align: center;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.region-select .done.disabled {
+  color: #999;
+}
+
+.region-select .bd {
+  height: 492rpx;
+  width: 100%;
+  padding: 0 30rpx;
+}
+
+.region-select .region-list {
+  height: 492rpx;
+}
+
+.region-select .region-list .item {
+  width: 100%;
+  height: 104rpx;
+  line-height: 104rpx;
+  text-align: left;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.region-select .region-list .item.selected {
+  color: #b4282d;
+}
+
+.bg-mask {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8;
+}
+
+.main{
+  background: #fff;
+}
+
+.check-sex-wrap{
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 220rpx;
+}
+.check-sex-wrap checkbox {
+  transform: scale(.8);
+}
+
+.address-tag{
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 210rpx;
+}
+.address-tag-item{
+  width: 76rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  font-size: 24rpx;
+  color: #333333;
+  font-weight: 400;
+  text-align: center;
+  border: 1rpx solid #DEDEDE;
+  margin-left: 30rpx;
+  border-radius: 4rpx;
+}
+.active-tag{
+  background: #348DFF;
+  border: none;
+  color: #fff;
+}
+
+.address-title{
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+.address-input placeholder{
+  color: red!important;
+}
+
+
+radio::before, checkbox::before {
+  font-family: "fontIcon";
+  content: "\e645";
+  position: absolute;
+  color: var(--white) !important;
+  top: 50%;
+  margin-top: -8px;
+  right: 5px;
+  font-size: 32rpx;
+  line-height: 16px;
+  pointer-events: none;
+  transform: scale(1, 1);
+  transition: all 0.3s ease-in-out 0s;
+  z-index: 9;
+}
+
+radio .wx-radio-input, checkbox .wx-checkbox-input {
+  margin: 0;
+  width: 24px;
+  height: 24px;
+}
+
+switch .wx-switch-input::before, radio.radio::before,
+checkbox .wx-checkbox-input::before, radio .wx-radio-input::before,
+radio.radio::before {
+  display: none;
+}
+
+radio.radio[checked]::after {
+  content: "";
+  background-color: transparent;
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  z-index: 999;
+  top: 0rpx;
+  left: 0rpx;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 200rpx;
+  border: 8px solid var(--white) !important;
+}

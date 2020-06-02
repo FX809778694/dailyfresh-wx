@@ -1,0 +1,30 @@
+<view class="explain-wrap">
+
+  <view class="content-item">
+    <view class="explain-title">Q1：⽬前有⼏种优惠形式？</view>
+    <view class="explain-content">新⼈优惠券，全场通⽤优惠券，限时促销等多种优惠。</view>
+  </view>
+
+  <view class="content-item">
+    <view class="explain-title">Q2：如何获取优惠券？</view>
+    <view class="explain-content">优惠券可凭兑换码到【我的】【优惠券】【未使⽤】进⾏兑换，所兑换优惠券均有时效说明，请在规定时间内使⽤，逾期不予补发。</view>
+  </view>
+
+  <view class="content-item">
+    <view class="explain-title">Q3：新⼈优惠券获取/使用条件？</view>
+    <view class="explain-content">（1）新⼈优惠券仅限新⽤户获取、使⽤（⼿机号未在本平台下过单）。</view>
+    <view class="explain-content">（2）收货⼿机号与账号信息需为同⼀⼿机号。</view>
+  </view>
+
+  <view class="content-item">
+    <view class="explain-title">Q4：优惠券使⽤规则？</view>
+    <view class="explain-content">同⼀订单中仅可使⽤⼀张优惠券。</view>
+  </view>
+
+  <view class="content-item">
+    <view class="explain-title">Q5：还有哪些优惠形式？</view>
+    <view class="explain-content">平台每天将在不同时间段推出限时折扣商品，可在【⾸⻚】【限时抢购】进⾏查看。</view>
+  </view>
+
+
+</view>

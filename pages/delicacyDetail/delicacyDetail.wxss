@@ -1,0 +1,286 @@
+page{
+  padding-bottom: 50rpx;
+}
+#home{
+  background: #F6F6F6;
+}
+
+/* 商品图片 */
+
+.goodsBanner {
+  width: 750rpx;
+  height: 750rpx;
+  position: relative;
+}
+.detail-swiper-img{
+  display: inline-block;
+  width: 750rpx;
+  height: 750rpx;
+}
+
+.food-title-wrap{
+  background: #fff;
+  padding: 30rpx;
+  position: relative;
+}
+.food-name{
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: 600;
+  line-height: 42rpx;
+  margin-top: 26rpx;
+}
+.food-tip{
+  font-size: 24rpx;
+  color: #999999;
+  font-weight: 400;
+  margin-top: 18rpx;
+}
+.food-detail{
+  color: #666666;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+}
+.praised-wrap{
+  position: absolute;
+  right: 40rpx;
+  top: 60rpx;
+}
+.already-praised{
+  color: #fbb709;
+}
+.not-praised{
+  color: #dbdbdb;
+}
+
+.rich-text-wrap{
+
+}
+
+
+.ingredients-list{
+  background: #fff;
+  padding: 40rpx 30rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+}
+.ingredients-title{
+  display: flex;
+  justify-content: space-between;
+}
+.title-l{
+  font-size: 30rpx;
+  color: #333333;
+}
+.title-r{
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.ingredients-list-item{
+  margin-top: 30rpx;
+}
+.list-item-title{
+  font-size: 24rpx;
+}
+.list-item-title-l{
+  color: #333333;
+}
+.list-item-title-mid{
+  padding: 0 6rpx;
+}
+.list-item-title-r{
+  color: #999999;
+}
+
+.ingredients-scroll-wrap{
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+  background: #fff;
+}
+.ingredients-scroll-item{
+  display: inline-block;
+  margin-left: 20rpx;
+}
+.ingredients-scroll-item:first-child{
+  margin-left: 0;
+}
+.scroll-item-con{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 200rpx;
+  border: 1rpx solid #ECECEC;
+  border-radius: 8rpx;
+  overflow: hidden;
+  position: relative;
+  padding-left: 10rpx;
+}
+.scroll-item-l{
+  width: 180rpx;
+  height: 180rpx;
+  display: inline-block;
+}
+.scroll-item-r{
+  padding: 30rpx;
+}
+.scroll-item-r-t{
+  font-size: 30rpx;
+  color: #333333;
+  max-width: 290rpx;
+  min-width: 160rpx;
+  margin-right: 40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.item-price{
+  margin-top: 50rpx;
+}
+.price-l-icon{
+  font-size: 24rpx;
+  color: #3AB44B;
+}
+.item-price-l{
+  font-size: 30rpx;
+  color: #3AB44B;
+}
+.item-price-r{
+  font-size: 24rpx;
+  color: #CDCDCD;
+  margin-left: 20rpx;
+  text-decoration: line-through;
+}
+
+.add-btn{
+  position: absolute;
+  right: 20rpx;
+  bottom: 30rpx;
+}
+
+
+.step-swiper{
+  margin-top: 20rpx;
+  background: #fff;
+  padding: 20rpx 10rpx;
+}
+.swiper-title{
+  font-size: 30rpx;
+  color: #333333;
+  margin: 20rpx 0;
+  margin-left: 20rpx;
+  font-weight: 600;
+  text-align: left;
+  margin-top: 30rpx;
+}
+.swiper-item-img{
+  width: 690rpx;
+  height: 360rpx;
+}
+.swiper-item-img image{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.detail-tips{
+  padding: 30rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.tips-title{
+  color: #333333;
+  font-size: 30rpx;
+  font-weight: 600;
+  line-height: 42rpx;
+}
+.tips-content{
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #666666;
+  font-weight: 400;
+}
+
+.view-more-wrap{
+  width: 100%;
+  background: #fff;
+  padding-bottom: 20rpx;
+}
+.view-more{
+  width: 180rpx;
+  height: 50rpx;
+  border-radius: 34rpx;
+  border: 1rpx solid #DEDEDE;
+  text-align: center;
+  font-size: 24rpx;
+  color: #333333;
+  font-weight: 400;
+  line-height: 50rpx;
+  margin: 0 auto;
+}
+
+.open-status{
+  height: auto;
+}
+.fold-status{
+  height: 700rpx;
+}
+
+
+.addRemoveNum{
+  margin-right: 10rpx;
+  max-width: 130rpx;
+  padding-top: 86rpx;
+}
+
+.car-wrap{
+  position: fixed;
+  right: 16rpx;
+  bottom: 120rpx;
+  width: 54rpx;
+  height: 54rpx;
+  background: #fff;
+  border-radius: 50%;
+  line-height: 54rpx;
+  text-align: center;
+  color: #333;
+  box-shadow: 0 0 6rpx 0 rgba(0, 0, 0, .18);
+}
+
+.step-item{
+  text-align: center;
+}
+.step-img{
+  width: 690rpx;
+  display: inline-block;
+  margin: 0 auto;
+}
+.step-describe{
+  font-size: 30rpx;
+  color: #333;
+  margin-top: 20rpx;
+  text-align: left;
+  padding-left: 20rpx;
+}
+
+.car-num{
+  position: absolute;
+  top: -20rpx;
+  right: -14rpx;
+  background: #F73F24;
+  border-radius: 50%;
+  padding: 2rpx 6rpx;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 34rpx;
+  width: 38rpx;
+}
+.over-num{
+  border-radius: 30rpx;
+  width: auto;
+}

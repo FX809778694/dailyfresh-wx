@@ -1,0 +1,20 @@
+<view class="bg-white radius-card margin-sm padding content">
+  <view class="text-center text-sm text-grey">
+    您共有{{integralUser}}积分，本次最多可用{{integralUsable}}积分
+  </view>
+
+  <view class="padding-top text-center">
+    <text class="text-price text-sl text-green">{{integralPrice}}</text>
+    <text class="text-grey margin-left">{{integralSelect}}积分</text>
+  </view>
+
+  <view class="padding-tb-xl">
+    <slider bindchanging="sliderChange" step="100" min="0" max="{{integralUser}}" value="{{integralSelect}}" />
+    <view class="flex justify-between margin-top-lg">
+      <view>0 积分</view>
+      <view>{{integralUser}} 积分</view>
+    </view>
+  </view>
+
+  <view class="btn block bg-green radius-card lg" bindtap="affirm">确认兑换</view>
+</view>

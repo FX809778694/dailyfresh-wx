@@ -1,0 +1,42 @@
+.login {
+  background: #fff;
+  height: 100vh;
+  padding: 0 50rpx;
+  text-align: center;
+  position: relative;
+}
+
+.logo-img{
+  width: 356rpx;
+  height: 168rpx;
+  display: inline-block;
+  margin: 80rpx auto 140rpx auto;
+}
+
+.login button {
+  border-radius: 40rpx;
+}
+
+.wx-login{
+  background: #1EAC52;
+  color: #FFFFFF;
+  font-size: 32rpx;
+}
+.phone-login{
+  font-size: 24rpx;
+  color: #5F6EB1;
+  text-align: center;
+}
+
+.login-agreement{
+  width: 440rpx;
+  position: absolute;
+  left: 50%;
+  margin-left: -220rpx;
+  bottom: 40rpx;
+  font-size: 24rpx;
+  color: #333333;
+}
+.login-agreement text{
+  color: #596CC0;
+}

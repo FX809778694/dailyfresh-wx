@@ -1,0 +1,83 @@
+<view class="main-wrap">
+
+  <view class="schedule-wrap">
+
+    <view class="schedule-title">
+      售后进度
+    </view>
+
+    <view class="item-wrap">
+
+      <view
+        class="con-item"
+        wx:for="{{statusData}}"
+        wx:key="index"
+        wx:for-item="item">
+        <view class="con-item-p {{index == 0 ? 'active' : ''}}">{{item.approveContent}}</view>
+        <view class="con-item-time {{index == 0 ? 'active' : ''}}">{{item.createTime}}</view>
+        <view class="circle-icon" wx:if="{{index !== 0}}"></view>
+        <view class="active-circle-icon" wx:if="{{index == 0}}">
+          <view class="circle-icon-con"></view>
+        </view>
+        <view class="cover-icon-top" wx:if="{{index == 0}}"></view>
+      </view>
+
+    </view>
+    <view class="view-more" wx:if="{{allStatusData.length > 3 && showMoreBtn}}" bindtap="showMoreData">查看更多状态<text class="iconfont iconshouhuoxuanze"></text></view>
+
+  </view>
+
+  <view class="apply-detail-wrap">
+
+    <view class="schedule-title">
+      申请详情
+    </view>
+
+    <view class="list-item-wrap">
+
+      <view class="item-top">
+        <image class="item-shop-img" src="{{applyDetailData.orderGoods.picUrl}}"></image>
+        <view class="item-content">
+          <view class="content-l">
+            <text class="l-name">{{applyDetailData.orderGoods.goodsName}}</text>
+            <text class="l-num">数量：{{applyDetailData.orderGoods.number}} 可申请数量：{{applyDetailData.orderGoods.number}}</text>
+          </view>
+          <view class="content-r">¥{{applyDetailData.orderGoods.isFlashGoods ? applyDetailData.orderGoods.flashPrice : applyDetailData.orderGoods.price}}</view>
+        </view>
+      </view>
+
+      <view class="item-key-value">
+        <text>实际退款金额</text>
+        <text>¥{{applyDetailData.aftersales.actualAmount}}</text>
+      </view>
+      <view class="item-key-value">
+        <text>申请数量</text>
+        <text>{{applyDetailData.aftersales.applyNum}}</text>
+      </view>
+      <view class="item-key-value">
+        <text>商品问题比例</text>
+        <text>{{applyDetailData.aftersales.problemProportion}}%</text>
+      </view>
+
+    </view>
+
+    <view class="service-picture">
+
+      <view class="reason-title">售后原因</view>
+
+      <view class="reason-img-wrap">
+        <image
+          wx:for="{{applyDetailData.aftersales.applyImages}}"
+          wx:key="index"
+          wx:for-item="item"
+          src="{{item}}"
+        ></image>
+      </view>
+
+      <view class="reason-describe">{{applyDetailData.aftersales.classifyItemContent}}</view>
+
+    </view>
+
+  </view>
+
+</view>

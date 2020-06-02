@@ -1,0 +1,74 @@
+<scroll-view style="height: 100%;">
+  <!-- 搜索 -->
+  <view class="bar fixed bg-white padding-lr-sm flex justify-between" id="header">
+    <view class="bar searchBox">
+      <view class="search-form round">
+        <text class="iconfont iconsousuo search-icon"></text>
+        <input
+          name="input"
+          class="keywrod"
+          focus="true"
+          value="{{keyword}}"
+          confirm-type="search"
+          bindinput="inputChange"
+          bindfocus="inputFocus"
+          bindconfirm="onKeywordConfirm"
+          placeholder="{{defaultKeyword.keyword}}" />
+      </view>
+    </view>
+    <view class="btn bg-green light radius sm" bindtap="closeSearch">取消</view>
+  </view>
+
+  <view class="no-search" wx:if="{{!searchStatus}}">
+    <!-- 历史记录 -->
+    <view class="bg-white radius-card padding-sm margin-sm" wx:if="{{!keyword && historyKeyword.length > 0}}">
+      <view class="flex justify-between align-center margin-bottom">
+        <text class="text-grey">历史记录</text>
+        <text class="fontIcon-delete" bindtap="clearHistory"></text>
+      </view>
+      <view>
+        <view class="btn line-gray sm margin-right-sm margin-bottom-sm" bindtap="onKeywordTap" data-keyword="{{item.keyword}}" wx:for="{{historyKeyword}}" wx:key="keyword" hover-class="navigator-hover">{{item.keyword}}</view>
+      </view>
+    </view>
+
+    <!-- 热门搜索 -->
+    <view class="bg-white radius-card padding-sm margin-sm" wx:if="{{!keyword && hotKeyword.length > 0}}">
+      <view class="text-grey margin-bottom">热门搜索</view>
+      <view>
+        <view class="btn line-gray sm margin-right-sm margin-bottom-sm {{item.is_hot === 1 ? 'active' : ''}}" hover-class="navigator-hover" bindtap="onKeywordTap" data-keyword="{{item.keyword}}" wx:for="{{hotKeyword}}" wx:key="id">{{item.keyword}}</view>
+      </view>
+    </view>
+
+    <view class="bg-white radius-card padding-sm margin-sm" wx:if="{{keyword && helpKeyword.length > 0}}">
+      <view class="btn line-gray sm margin-right-sm margin-bottom-sm" hover-class="navigator-hover" wx:for="{{helpKeyword}}" wx:key="id" bindtap="onKeywordTap" data-keyword="{{item}}">{{item}}</view>
+    </view>
+  </view>
+
+  <!-- 搜索结果 -->
+  <view wx:if="{{ searchStatus && goodsList.length > 0}}">
+    <view class="bg-white sort">
+      <view class="flex justify-around align-center sort-box">
+        <view class="{{currentSortType == 'default' ? 'text-green' : ''}}" bindtap="openSortFilter" id="defaultSort">综合</view>
+        <view class="{{currentSortType == 'price' ? 'text-green' : ''}}" bindtap="openSortFilter" id="priceSort">价格</view>
+        <view class="{{currentSortType == 'category' ? 'text-green' : ''}}" bindtap="openSortFilter" id="categoryFilter">分类</view>
+      </view>
+      <view class="padding-sm solid-top solid-bottom" wx-if="{{categoryFilter}}">
+        <view class="btn sm margin-right-sm margin-bottom-sm line-gray {{item.checked ? 'bg-green' : ''}}" wx:for="{{filterCategory}}" wx:key="id" data-category-index="{{index}}" bindtap="selectCategory">{{item.name}}</view>
+      </view>
+    </view>
+
+    <view class="flex justify-between flex-wrap padding-sm cate-item">
+        <navigator class="bg-white radius-card padding-sm margin-bottom-sm item" url="/pages/goods/goods?id={{iitem.id}}" wx:for="{{goodsList}}" wx:key="id" wx:for-item="iitem" wx:for-index="iindex">
+          <image src="{{swiperImgPrefix + iitem.picUrl}}" mode="widthFix"></image>
+          <view class="margin-tb-sm">{{iitem.name}}</view>
+          <view class="text-price text-orange text-xl">{{iitem.retailPrice}}</view>
+        </navigator>
+    </view>
+  </view>
+
+  <!-- 没有搜索结果 -->
+  <view class="empty-data" wx:if="{{!goodsList.length && searchStatus}}">
+    <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/search.png"></image>
+    <text>您寻找的商品还未上架</text>
+  </view>
+</scroll-view>

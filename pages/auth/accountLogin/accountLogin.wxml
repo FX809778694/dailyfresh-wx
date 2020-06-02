@@ -1,0 +1,19 @@
+<view class="form">
+  <view class="bg-white margin-sm padding radius-card">
+    <view class="padding-tb flex justify-between align-center solid-bottom">
+      <input class="username" value="{{username}}" bindinput="bindUsernameInput" placeholder="账号" />
+      <text class="fontIcon-close" wx:if="{{ username.length > 0 }}" id='clear-username' catchtap="clearInput"></text>
+    </view>
+    <view class="padding-tb flex justify-between align-center solid-bottom">
+      <input class="password" value="{{password}}" password bindinput="bindPasswordInput" placeholder="密码" />
+      <text class="fontIcon-close" wx:if="{{ password.length > 0 }}" id='clear-password' catchtap="clearInput"></text>
+    </view>
+    <view class="bg-green margin-top-xl btn block lg radius " bindtap="accountLogin">
+      账号登录
+    </view>
+    <view class="flex justify-between padding-tb">
+      <navigator url="/pages/auth/register/register" class="register">注册账号</navigator>
+      <navigator url="/pages/auth/reset/reset" class="reset">忘记密码</navigator>
+    </view>
+  </view>
+</view>

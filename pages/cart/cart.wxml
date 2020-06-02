@@ -1,0 +1,111 @@
+<!-- 未登录 -->
+<view class="no-login text-center" wx:if="{{!hasLogin}}">
+  <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/noCart.png" />
+  <view class="text-grey">还没有登录</view>
+  <view class="btn bg-green lg margin-top radius" bindtap="goLogin">去登录</view>
+</view>
+
+<view wx:else>
+  <view class="bg-white padding-sm text-right" wx:if="{{cartGoods.length > 0}}">
+    <text bindtap="deleteCart">删除</text>
+  </view>
+
+  <!-- 购物车没有商品提示 -->
+  <view class="no-cart text-center" wx:if="{{cartTotal.goodsCount == 0}}">
+    <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/noCart.png" />
+    <view class="text-grey">购物车空空如也~</view>
+    <view class="btn bg-green lg margin-top radius" bindtap="goShopping">去购物</view>
+  </view>
+
+  <!-- 购物车主体 -->
+  <view class="{{recommend.length <= 0? 'cartMain' : ''}}" wx:else>
+    <!-- 列表 -->
+    <view class="bg-white radius-card margin-sm padding-lr-sm padding-top-lg cartGoods">
+
+      <view wx:for="{{cartGoods}}" wx:key="id">
+        <view class="flex justify-between align-center margin-bottom-sm">
+          <checkbox class="round" checked="{{item.checked ? true : false}}" wx:if="{{item.isValidate}}" bindtap="checkedItem" data-item-index="{{index}}"></checkbox>
+
+          <view class="goodsItem">
+
+            <navigator url="../goods/goods?id={{item.goodsId}}" hover-class="none" class="flex justify-between">
+              <image src="{{swiperImgPrefix + item.picUrl}}"></image>
+              <view class="goodsInfo">
+                <view class="padding-top-sm name">{{item.goodsName}}</view>
+                <view class="price">
+                  <text class="text-price text-orange" wx:if="item.isFlashGoods">{{item.number <= item.flashNum ? item.flashPrice : item.price}}</text>
+                  <text class="text-price text-orange" wx:else>{{item.price}}</text>
+                  <text class="text-price text-line text-sm text-grey margin-left-sm">{{item.marketPrice}}</text>
+                </view>
+              </view>
+            </navigator>
+
+            <view class="flex align-center addRemoveNum" wx:if="{{item.isValidate}}">
+              <view class="iconfont iconjia round" bindtap="cutNumber" data-item-index="{{index}}"></view>
+              <input class="text-center" value="{{item.number}}" disabled="true" type="number" />
+              <view class="iconfont iconjian round" bindtap="addNumber" data-item-index="{{index}}"></view>
+            </view>
+
+          </view>
+        </view>
+        <view class="skill-shop-tips" wx:if="{{item.isFlashGoods && item.number > item.flashNum}}"><text class="skill-tips-arrow"></text><text class="skill-tips-title">促销</text>￥{{item.flashPrice}}限购{{item.flashNum}}件，第{{item.flashNum}}件以上恢复原价</view>
+      </view>
+
+    </view>
+  </view>
+
+  <!-- 猜你喜欢 -->
+  <view wx:if="{{recommend.length > 0}}">
+    <view class="text-lg text-center margin-top-xl margin-bottom">猜你喜欢</view>
+    <view class="flex flex-wrap padding-lr-xs recommend">
+      <view class="bg-white radius-card margin-bottom-sm padding-sm item" wx:for="{{recommend}}" wx:key="id">
+        <navigator url="../goods/goods?id={{item.id}}" hover-class="none">
+          <image src="{{swiperImgPrefix + item.picUrl}}"></image>
+          <view class="margin-tb-sm name">{{item.name}}</view>
+
+          <view>
+            <text class="text-price text-orange">{{item.retailPrice}}</text>
+            <text class="text-price text-sm text-grey text-line margin-left-sm">{{item.marketPrice}}</text>
+          </view>
+        </navigator>
+
+        <view class="iconfont iconjian avatar like-add-btn" data-item-index="{{index}}" bindtap="addToCart">
+        <text wx:if="{{item.number}}" class="tag badge bg-orange">{{item.number}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 优惠提示 -->
+  <view wx:if="{{cartGoods.length > 0}}">
+    <view class="bg-orange padding-lr-sm flex justify-between align-center cartTip" wx:if="{{cartTotal.checkedGoodsAmount < minOrderTotal}}">
+      <view>还差{{gapOrderTotal}}元就能起送</view>
+    </view>
+    <view class="bg-yellow light padding-lr-sm flex justify-between align-center cartTip" wx:if="{{cartTotal.checkedGoodsAmount >= minOrderTotal && gapPrice > 0}}">
+      <view>实付满{{minFreight}}元包邮，还差{{gapPrice}}元</view>
+      <view class="btn bg-orange radius sm" bindtap="pieceOrder">去凑单</view>
+    </view>
+  </view>
+
+  <!-- 底部结算信息 -->
+  <view class="bg-white padding-lr-sm flex justify-between align-center cartBottom ">
+    <!-- 全选 -->
+    <view>
+      <checkbox class="round" checked="{{checkedAllStatus ? true : false}}" bindtap="checkedAll"></checkbox>
+      <text class="margin-left-sm text-sm">全选</text>
+    </view>
+
+    <!-- 总价 -->
+    <view class="text-sm">
+      <view>优惠：
+        <text class="text-price">{{discounts}}</text>
+      </view>
+      <view>合计：
+        <text class="text-price text-orange text-lg">{{cartTotal.checkedGoodsAmount}}</text>
+      </view>
+    </view>
+
+    <!-- 结算按钮 -->
+    <view class="btn bg-green radius lg {{cartTotal.checkedGoodsAmount < minOrderTotal? 'bg-gray' : ''}}" bindtap="checkoutOrder">去结算({{cartTotal.checkedGoodsCount}})</view>
+  </view>
+</view>

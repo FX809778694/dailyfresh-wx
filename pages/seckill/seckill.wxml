@@ -1,0 +1,66 @@
+<view class="seckill-page">
+
+  <view class="header-time">
+    <scroll-view class="scroll-time" scroll-x scroll-left="{{initialLeft}}" bindscroll="timeScrollHandle" style="width: 100%">
+      <view
+        class="scroll-time-item"
+        wx:for="{{timeList}}"
+        wx:for-index="index"
+        wx:for-item="item"
+        bindtap="selectTimeHandle"
+        data-item="{{item}}"
+        wx:key="index">
+        <view class="time-item-t {{item.itemId === selectTime ? 'active-time-t' : ''}}">{{item.itemStart}}</view>
+        <view class="time-item-b {{item.itemId === selectTime ? 'active-time-b' : ''}}">{{item.itemStatus === 1 ? '即将开始' : item.itemStatus === 3 ? '已结束' : '进行中'}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="seckill-clock-wrap">
+    <view class="seckill-clock">
+      <view wx:if="{{itemStatus === 2}}">
+        <text class="clock-l-title">距离本次结束还剩</text>
+        <text class="clock-con-item">{{clockHr}}</text>
+        <text class="clock-con-colon">:</text>
+        <text class="clock-con-item">{{clockMin}}</text>
+        <text class="clock-con-colon">:</text>
+        <text class="clock-con-item">{{clockSec}}</text>
+        <text class="clock-con-colon">:</text>
+        <text class="clock-con-item">{{microSec}}</text>
+      </view>
+      <view wx:if="{{itemStatus === 3}}">已结束</view>
+      <view wx:if="{{itemStatus === 1}}">暂未开始</view>
+      <view class="">先抢先得</view>
+    </view>
+  </view>
+
+  <view class="shop-list" style="min-height: {{ noDataWrapHeight }}px" wx:if="{{totalSize > 0}}">
+
+    <view class="shop-item" wx:for="{{shopList}}" wx:for-index="index" wx:for-item="item" wx:key="index" data-goodsId="{{item.goodsId}}" bindtap="enterGoodDetail">
+      <image class="shop-img" src="{{item.picUrl}}"></image>
+      <view class="item-r">
+        <view class="shop-name">{{item.name}}</view>
+        <view class="shop-describe">{{item.brief}}</view>
+        <view class="shop-price">
+          <text class="shop-price-l">￥{{item.goodsFlashPrice}}</text>
+          <text class="shop-price-r">￥{{item.retailPrice}}</text>
+        </view>
+        <view class="shop-progress">
+          <view class="shop-progress-con" style="width: {{item.processWidth}}%">
+            仅剩{{item.goodsStock <= 0 ? 0 : item.goodsStock}}件
+          </view>
+        </view>
+        <view class="shop-describe">每人限购{{item.goodsRestriction}}件</view>
+      </view>
+
+      <view class="add-shop-btn">{{item.goodsStock <= 0 ? '已抢光' : '立即抢购'}}</view>
+    </view>
+
+  </view>
+
+  <view class="no-data-wrap" style="height: {{ noDataWrapHeight }}px" wx:if="{{ totalSize === 0 }}">
+    <image class="no-data-img" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/skill-no-data.png"></image>
+    <view class="no-data-p">暂无数据</view>
+  </view>
+
+</view>

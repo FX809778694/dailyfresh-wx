@@ -1,0 +1,19 @@
+<view class="list menu margin-sm radius">
+<!--  <view class='item' bindtap='goPassword'>-->
+<!--    <view>支付密码</view>-->
+<!--    <view class="iconfont iconquanbudingdan"></view>-->
+<!--  </view>-->
+  <view class='item' bindtap='goFeedback'>
+    <view>意见反馈</view>
+    <view class="iconfont iconquanbudingdan"></view>
+  </view>
+  <view class='item' bindtap="enterPrivacyPolicy">
+    <view>隐私政策</view>
+    <view class="iconfont iconquanbudingdan"></view>
+  </view>
+</view>
+
+<view class="logout-btn">
+  <button wx:if="{{hasLogin}}" type="primary" loading="{{loading}}" plain="{{plain}}" bindtap="logout">退出登录</button>
+  <button wx:else type="primary" loading="{{loading}}" plain="{{plain}}" bindtap="enterLogin">去登录</button>
+</view>

@@ -1,0 +1,125 @@
+
+<view class="main-wrap">
+
+  <view class="header-shop-info">
+    <view class="item-top">
+      <image class="item-shop-img" src="{{goodsInfo.picUrl}}"></image>
+      <view class="item-content">
+        <view class="content-l">
+          <text class="l-name">{{goodsInfo.goodsName}}</text>
+          <text class="l-num">数量：{{goodsInfo.number}} 可申请数量：{{goodsInfo.number}}</text>
+        </view>
+        <view class="content-r">¥{{goodsInfo.isFlashGoods ? goodsInfo.flashPrice : goodsInfo.price}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="form-plain">
+
+    <view class="form-item">
+      <text class="item-title">申请数量</text>
+      <view class="flex justify-end align-center addRemoveNum ">
+        <view class="num-icon-wrap">
+          <text class="iconfont iconziyuan round num-icon" bindtap="cutShopNumber" wx:if="{{shopNumber > 1}}"></text>
+        </view>
+
+        <input class="text-center num-input" value="{{shopNumber}}" disabled="true" type="number" />
+
+        <view class="num-icon-wrap">
+          <text class="iconfont iconjia1 round num-icon" bindtap="addShopNumber" wx:if="{{shopNumber < goodsInfo.number}}"></text>
+        </view>
+
+      </view>
+    </view>
+
+    <view class="form-item">
+
+      <text class="item-title">问题商品占比</text>
+
+      <view class="picker-wrap">
+        <picker bindchange="bindReasonScalePickerChange" value="{{activeSelIndex}}" range="{{reasonScaleAry}}" range-key="name">
+          <view class="picker">
+            {{reasonScaleAry[activeSelIndex].name}}
+            <text class="iconfont iconshouhuoxuanze"></text>
+          </view>
+        </picker>
+
+      </view>
+
+    </view>
+
+    <view class="form-item">
+      <text class="item-title">实际退款金额</text>
+      <text class="refund-amount">￥{{refundAmount}}</text>
+    </view>
+
+  </view>
+
+  <view class="form-img">
+
+    <view class="schedule-title">
+      申请原因
+    </view>
+
+    <view class="radio-wrap">
+      <radio-group class="radio-group" bindchange="radioOneReasonChange">
+        <radio class="radio" wx:for-items="{{oneLevelReasonData}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+          <text>{{item.value}}</text>
+        </radio>
+      </radio-group>
+    </view>
+
+    <view class="two-reason">
+      <view
+        class="two-reason-item {{twoLevelActiveReason == item.classifyItemId ? 'activeTwoReason' : ''}}"
+        wx:for="{{twoLevelReasonData}}"
+        wx:key="index"
+        wx:for-item="item"
+        bindtap="twoReasonClickHandle"
+        data-item="{{item}}">{{item.itemContent}}</view>
+    </view>
+
+    <view class="big-text-reason">
+      <textarea
+        placeholder="请描述您的详细问题"
+        maxlength="100"
+        bindblur="bindTextAreaBlur"
+        bindblur="inputBlur"
+        value="{{reasonContent}}"
+        bindinput="textareaInputHandle"/>
+      <text class="textarea-input-num">{{reasonContent.length}}/{{100}}</text>
+    </view>
+
+    <view class="upload-img-wrap">
+      <view
+        wx:for="{{imgListData}}"
+        wx:key="index"
+        wx:for-item="item"
+        class="item-img">
+        <image src="{{item}}"></image>
+        <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/apply-delete-icon.png" class="delete-img" data-item="{{index}}" bindtap="deleteImg"></image>
+      </view>
+      <view class="upload-btn" bindtap="_choose">
+        <view class="iconfont iconpaizhao"></view>
+        <view class="upload-tip">
+          <view>上传凭证</view>
+          <view style="color: #BDBDBD">(最多三张)</view>
+        </view>
+      </view>
+    </view>
+    <view class="upload-img-care">请上传商品包装袋上的快递单图片及所有问题商品图片。单张图片大小不超过5M.</view>
+
+  </view>
+
+  <view class="submit-btn-wrap {{isIphoneX ? 'bottom-btn-iphone-x': ''}}">
+    <view class="submit-btn" bindtap="submitApplyHandle">提交</view>
+  </view>
+
+</view>
+
+<cover-view class="success-model" wx:if="{{successSubmit}}">
+  <cover-view class="success-model-wrap">
+    <cover-view class="success-model-p">您已成功发起退款申请，我们将在24小时向您回复处理结果，请耐心等待。</cover-view>
+    <cover-view class="success-model-btn" bindtap="enterOrder">确定</cover-view>
+  </cover-view>
+</cover-view>

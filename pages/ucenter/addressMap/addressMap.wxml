@@ -1,0 +1,36 @@
+<view class="bar bg-white search {{searchFlag ? 'on' : ''}}">
+  <view class="flex justify-between align-center search-box">
+    <view class="search-form round">
+      <text class="fontIcon-search"></text>
+      <input bindinput="getsuggest" bindblur="getsuggest" value="{{keyword}}"></input>
+    </view>
+    <view class="text-green text-sm margin-right" wx:if="{{searchFlag}}" bindtap="cancel">取消</view>
+  </view>
+  <view class="bg-white padding item" wx:if="{{searchFlag}}">
+    <view wx:for="{{suggestion}}" wx:key="index" bindtap="keywordChange" id="{{index}}" class="solid-bottom padding-tb-sm flex justify-between align-center">
+      <view>
+        <view>{{item.title}}</view>
+        <view class="text-grey text-sm margin-top-xs">{{item.addr}}</view>
+      </view>
+      <view>{{item.distance}}</view>
+    </view>
+  </view>
+</view>
+
+<!--地图容器-->
+<map id="map" style="width:100%;height:300px;" markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}" scale='{{scale}}' bindtap="mapClick" bindregionchange="mapChange">
+</map>
+
+<view class="bg-white padding item">
+  <view wx:for="{{nearbyList}}" wx:key="nearbyList" bindtap="nearbyChange" id="{{index}}" class="solid-bottom padding-tb-sm flex justify-between align-center mapList">
+    <view class="img">
+      <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/addIcon.png" wx:if="{{item.mapCurrentFlag}}"></image>
+      <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/addIcon-no.png" wx:else></image>
+    </view>
+    <view class="content">
+      <view>{{item.title}}</view>
+      <view class="text-grey text-sm margin-top-xs">{{item.addr}}</view>
+    </view>
+    <view class="text-sm text-right distance">{{item.distance}}</view>
+  </view>
+</view>

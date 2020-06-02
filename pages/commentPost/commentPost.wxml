@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="bg-white radius-card margin-sm padding-sm" wx:for="{{goodsList}}" wx:key="id">
+    <!-- 商品基础信息 -->
+    <view class="flex align-center padding-tb-sm solid-bottom">
+      <view class="avatar radius lg margin-right">
+        <image src="{{item.picUrl}}"></image>
+      </view>
+      <view class="goodsName">
+        {{item.goodsName}}
+      </view>
+      <view class="flex star">
+        <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/zan{{item.star === '1'?'-on':''}}.png" data-num="1" data-item-index="{{index}}" bindtap="selectRater"></image>
+        <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/diss{{item.star === '0'?'-on':''}}.png" data-num="0" data-item-index="{{index}}" bindtap="selectRater"></image>
+      </view>
+    </view>
+
+    <!-- 评论框 -->
+    <view class="padding-sm radius-card solid">
+      <textarea focus="true" bindblur="bindInputValue" bindinput="bindInputValue" data-item-index="{{index}}" maxlength="140" placeholder="留言经过筛选后，对所有人可见" />
+      <view class="text-right text-grey">{{140 - item.content.length}}</view>
+    </view>
+
+    <!-- 图片上传 -->
+    <view class="margin-tb">
+      <view>
+        <text class="margin-right-sm">最多能上传三张图片</text> {{item.files.length}} / 3
+      </view>
+      <view class="flex margin-top" id="uploaderFiles">
+        <block wx:for="{{item.files}}" wx:key="*this" wx:for-index="imgIndex" wx:for-item="imgItem">
+          <view class="radius-card solid flex justify-center align-center imageBox">
+            <image src="{{imgItem}}" mode="aspectFill" />
+          </view>
+        </block>
+        <view class="radius-card solid flex justify-center align-center imageBox" wx:if="{{item.files.length <= 2}}" data-item-index="{{index}}" bindtap="chooseImage">
+          <text class="fontIcon-add text-xxl"></text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="bg-white btns" wx:if="{{goodsList.length > 0}}">
+  <view class="btn bg-green light" bindtap="onClose">取消</view>
+  <view class="btn bg-green" bindtap="onPost">发表</view>
+</view>

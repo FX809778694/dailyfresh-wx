@@ -1,0 +1,106 @@
+<view id="home">
+
+  <swiper class="bg-white goodsBanner" autoplay="true" interval="3000" duration="400" bindchange="swiperChangeHandle">
+    <swiper-item wx:for="{{detailData.headImgUrls}}" wx:key="*this">
+      <image class="detail-swiper-img" src="{{swiperImgPrefix + item}}" mode="center"></image>
+    </swiper-item>
+  </swiper>
+
+
+  <view class="food-title-wrap">
+    <view class="food-name">{{detailData.name}}</view>
+    <view class="food-tip">制作时间：{{detailData.cookTime}}    难度：高级</view>
+    <view class="food-detail">{{detailData.description}}</view>
+    <view
+      data-id="{{detailData.id}}"
+      bindtap="praisedHandle"
+      class="praised-wrap iconfont icondianzan1 {{detailData.liked == 1 ? 'already-praised' : 'not-praised'}}">
+    </view>
+  </view>
+
+  <view class="rich-text-wrap">
+
+  </view>
+
+  <view class="ingredients-list">
+
+    <view class="ingredients-title">
+      <text class="title-l">食材清单</text>
+      <text class="title-r">共{{detailData.cookMajors.length}}种</text>
+    </view>
+
+    <view
+      class="ingredients-list-item"
+      wx:for="{{cookMajorsData}}"
+      wx:for-index="index"
+      wx:for-item="one"
+      wx:key="index">
+      <view class="list-item-title">
+        <text class="list-item-title-l">{{one.title}}</text>
+        <text class="list-item-title-mid">/</text>
+        <text class="list-item-title-r">{{one.note}}</text>
+      </view>
+      <scroll-view class="ingredients-scroll-wrap" scroll-x="true" style="width: 100%; height: 100%">
+        <view
+          class="ingredients-scroll-item"
+          wx:for="{{one.goodsList}}"
+          wx:for-index="key"
+          wx:for-item="two"
+          wx:key="key">
+          <view class="scroll-item-con">
+            <image class="scroll-item-l" src="{{two.picUrl}}"></image>
+            <view class="scroll-item-r">
+              <view class="scroll-item-r-t">{{two.name}}</view>
+              <view class="item-price">
+                <text class="price-l-icon">￥</text>
+                <text class="item-price-l">{{two.retailPrice}}</text>
+                <text class="item-price-r">￥{{two.marketPrice}}</text>
+              </view>
+            </view>
+            <view class="flex justify-end align-center addRemoveNum">
+              <view class="iconfont iconjia round" wx:if="{{two.number > 0}}" bindtap="cutNumber" data-item-index="{{index}}" data-item-two-index="{{key}}"></view>
+              <input class="text-center" wx:if="{{two.number > 0}}" value="{{two.number}}" disabled="true" type="number" />
+              <view class="iconfont iconjian round" bindtap="addNumber" data-item-index="{{index}}" data-item-two-index="{{key}}"></view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+  </view>
+  <view class="view-more-wrap" wx:if="{{allCookMajorsData.length > 4 }}">
+    <view class="view-more" bindtap="viewMoreHandle" wx:if="{{viewMore}}">查看更多</view>
+    <view class="view-more" bindtap="viewHairDataHandle" wx:else>收起</view>
+  </view>
+
+  <view class="step-swiper">
+
+    <view
+      class="step-item"
+      wx:for="{{detailData.cookSteps}}"
+      wx:key="index"
+      wx:for-index="index"
+      wx:for-item="item">
+      <view class="swiper-title">
+        <text>步骤</text>
+        <text>{{index + 1}}</text>
+        <text style="padding: 0 10rpx">/</text>
+        <text>{{detailData.cookSteps.length}}</text>
+      </view>
+      <image class="step-img" src="{{swiperImgPrefix + item.img}}" wx:if="{{item.img !== ''}}" background-size="cover"></image>
+      <view class="step-describe">{{item.content}}</view>
+    </view>
+
+  </view>
+
+  <view class="detail-tips" wx:if="{{detailData.tips !== ''}}">
+    <view class="tips-title">小贴士</view>
+    <view class="tips-content">{{detailData.tips}}</view>
+  </view>
+
+  <view class="car-wrap" bindtap="enterCart">
+    <text class="iconfont icongouwuche"></text>
+    <view class="car-num {{cartNum > 99 ? 'over-num' : ''}}">{{cartNum}}</view>
+  </view>
+
+</view>

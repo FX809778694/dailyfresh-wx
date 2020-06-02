@@ -1,0 +1,134 @@
+.activity{
+
+  background: #FF5A49;
+
+
+}
+
+.top-bg-image{
+  width:750rpx;
+  height: 562rpx;
+}
+
+.gift_container{
+  padding: 32rpx 18rpx;
+
+}
+.gift{
+  border:1rpx solid rgba(255,189,126,1);
+  background:linear-gradient(0deg,rgba(255,67,50,1) 0%,rgba(233,43,63,1) 100%);
+  border-radius:7px;
+  padding: 16rpx 26rpx;
+}
+
+.gift_title{
+  font-size: 28rpx;
+  color: #FFEABD;
+  font-weight:bold;
+}
+.split_line{
+  height: 8rpx;
+}
+
+.gift_coupon_bg_img{
+  width: 138rpx;
+  height: 185rpx;
+}
+
+.coupon_list{
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.item{
+  text-align: center;
+}
+#hotGoods .item {
+  width: 138rpx;
+  display: inline-block;
+  position: relative;
+  height: 185rpx;
+  margin-right: 16rpx;
+  background-image: url(https://niuniu-wx.oss-cn-beijing.aliyuncs.com/activity_coupon.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  }
+.discount{
+  margin-top: 20rpx;
+  font-size: 69rpx;
+  color: #FFFEFA;
+}
+.min{
+  margin-top: 12rpx;
+  color: #FFFEFA;
+  font-size: 16rpx;
+}
+
+.to_use{
+
+  border-top: 1rpx dashed #FBFFFF;
+  padding-top: 16rpx;
+  margin-left: 8rpx;
+  width: 120rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.to_use_btn{
+  width:90rpx;
+  height:21rpx;
+  border-radius: 10rpx;
+  background:rgba(251,255,255,1);
+  font-size: 13rpx;
+  line-height: 20rpx;
+  color: #FF244A;
+}
+
+.gift.second{
+  padding: 16rpx 0;
+}
+.gift_title.second{
+  padding-left: 26rpx;
+}
+
+.shop-list{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.goods_item{
+  width: 230rpx;
+  display: inline-block;
+  position: relative;
+  height: 430rpx;
+  background:rgba(255,255,255,1);
+  border-radius:7px;
+  margin-bottom: 10rpx;
+  padding: 19rpx 13rpx;
+}
+
+.img{
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.name{
+  margin-top: 30rpx;
+  height: 80rpx;
+  font-size: 21rpx;
+  line-height: 26rpx;
+  color: #000000;
+  font-weight: normal;
+}
+.bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.bottom .price{
+  display: flex;
+  flex-direction: column;
+}

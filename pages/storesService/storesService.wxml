@@ -1,0 +1,203 @@
+<view id="home">
+
+  <view class="main-top">
+
+    <!-- 搜索 -->
+    <view class="header-search padding-lr" id="header">
+      <navigator url="/pages/search/search" hover-class="none">
+        <view class="bar">
+          <view class="search-form round">
+            <text class="iconfont iconsousuo search-icon"></text>
+            <input type="text" placeholder="发现新东西……" confirm-type="search"></input>
+          </view>
+        </view>
+      </navigator>
+    </view>
+
+    <view class="recommend-title">经典推荐</view>
+    <view class="recommend-wrap">
+      <scroll-view class="scroll-recommend" scroll-x="true" style="width: 100%; height: 100%">
+        <view class="recommend-item">
+          <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+          <view class="item-name"><text>宫爆鸡丁</text></view>
+        </view>
+        <view class="recommend-item">
+          <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+          <view class="item-name"><text>宫爆鸡丁</text></view>
+        </view>
+        <view class="recommend-item">
+          <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+          <view class="item-name"><text>宫爆鸡丁</text></view>
+        </view>
+      </scroll-view>
+    </view>
+
+  </view>
+
+  <view class="today-title">今日推荐</view>
+
+  <view class="list-wrap-tabs">
+    <view class="list-wrap-fixed" id="fixed-header" wx:if="!clickSelectClassify">
+      <scroll-view class="scroll-header" scroll-x="true" style="width: 100%; height: 100%">
+        <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{0}}">
+          <view class="time-shop-b">快手菜</view>
+        </view>
+        <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{1}}">
+          <view class="time-shop-b {{tabsActive === 0 ? 'active-shop-b' : ''}}">蔬菜</view>
+        </view>
+        <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{2}}">
+          <view class="time-shop-b">下饭菜</view>
+        </view>
+        <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{2}}">
+          <view class="time-shop-b">下饭菜</view>
+        </view>
+        <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{2}}">
+          <view class="time-shop-b">下饭菜</view>
+        </view>
+        <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{2}}">
+          <view class="time-shop-b">下饭菜</view>
+        </view>
+        <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{2}}">
+          <view class="time-shop-b">下饭菜</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="tabs-con">
+    <view class="con-item">
+      <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+      <view class="con-tip">进口澳洲牛肉空运新鲜 (2斤/装)单打的环hdshsh很少很少</view>
+      <view class="con-bottom">
+        <view>时长：五分钟啦</view>
+        <view>
+          <text class="iconfont icondianzan"></text>
+          <text>333</text>
+        </view>
+      </view>
+    </view>
+    <view class="con-item">
+      <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+      <view class="con-tip">进口澳洲牛肉空运新鲜 (2斤/装)单打的环hdshsh很少很少</view>
+      <view class="con-bottom">
+        <view>时长：五分钟啦</view>
+        <view>
+          <text></text>
+          <text>333</text>
+        </view>
+      </view>
+    </view>
+    <view class="con-item">
+      <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+      <view class="con-tip">进口澳洲牛肉空运新鲜 (2斤/装)单打的环hdshsh很少很少</view>
+      <view class="con-bottom">
+        <view>时长：五分钟啦</view>
+        <view>
+          <text></text>
+          <text>333</text>
+        </view>
+      </view>
+    </view>
+    <view class="con-item">
+      <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+      <view class="con-tip">进口澳洲牛肉空运新鲜 (2斤/装)单打的环hdshsh很少很少</view>
+      <view class="con-bottom">
+        <view>时长：五分钟啦</view>
+        <view>
+          <text></text>
+          <text>333</text>
+        </view>
+      </view>
+    </view>
+    <view class="con-item">
+      <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+      <view class="con-tip">进口澳洲牛肉空运新鲜 (2斤/装)单打的环hdshsh很少很少</view>
+      <view class="con-bottom">
+        <view>时长：五分钟啦</view>
+        <view>
+          <text></text>
+          <text>333</text>
+        </view>
+      </view>
+    </view>
+    <view class="con-item">
+      <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+      <view class="con-tip">进口澳洲牛肉空运新鲜 (2斤/装)单打的环hdshsh很少很少</view>
+      <view class="con-bottom">
+        <view>时长：五分钟啦</view>
+        <view>
+          <text></text>
+          <text>333</text>
+        </view>
+      </view>
+    </view>
+    <view class="con-item">
+      <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+      <view class="con-tip">进口澳洲牛肉空运新鲜 (2斤/装)单打的环hdshsh很少很少</view>
+      <view class="con-bottom">
+        <view>时长：五分钟啦</view>
+        <view>
+          <text></text>
+          <text>333</text>
+        </view>
+      </view>
+    </view>
+    <view class="con-item">
+      <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+      <view class="con-tip">进口澳洲牛肉空运新鲜 (2斤/装)单打的环hdshsh很少很少</view>
+      <view class="con-bottom">
+        <view>时长：五分钟啦</view>
+        <view>
+          <text></text>
+          <text>333</text>
+        </view>
+      </view>
+    </view>
+    <view class="con-item">
+      <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+      <view class="con-tip">进口澳洲牛肉空运新鲜 (2斤/装)单打的环hdshsh很少很少</view>
+      <view class="con-bottom">
+        <view>时长：五分钟啦</view>
+        <view>
+          <text></text>
+          <text>333</text>
+        </view>
+      </view>
+    </view>
+    <view class="con-item">
+      <image src="https://images.niuniufresh.com/8hzp0gazfuhjhdv8pqjb.jpg"></image>
+      <view class="con-tip">进口澳洲牛肉空运新鲜 (2斤/装)单打的环hdshsh很少很少</view>
+      <view class="con-bottom">
+        <view>时长：五分钟啦</view>
+        <view>
+          <text></text>
+          <text>333</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<view class="list-wrap-fixed fixed-tabs " hidden="{{fixedTabs}}">
+  <scroll-view class="scroll-header" scroll-x="true" style="width: 100%; height: 100%">
+    <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{0}}">
+      <view class="time-shop-b">快手菜</view>
+    </view>
+    <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{1}}">
+      <view class="time-shop-b {{tabsActive === 0 ? 'active-shop-b' : ''}}">蔬菜</view>
+    </view>
+    <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{2}}">
+      <view class="time-shop-b">下饭菜</view>
+    </view>
+    <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{2}}">
+      <view class="time-shop-b">下饭菜</view>
+    </view>
+    <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{2}}">
+      <view class="time-shop-b">下饭菜</view>
+    </view>
+    <view class="scroll-shop-item" bindtap="selectClassifyHandle" data-id="{{2}}">
+      <view class="time-shop-b">下饭菜</view>
+    </view>
+  </scroll-view>
+</view>

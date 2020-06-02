@@ -1,0 +1,63 @@
+
+<view class="main">
+  <view class="list menu radius-card margin-sm address">
+    <view class="item">
+      <text class="address-title">收货人</text>
+      <input placeholder-style="color: #D4D4D4" class="address-input" bindinput="bindinputName" bindblur="bindinputName" placeholder="请填写收货人的姓名" value="{{name}}" auto-focus/>
+    </view>
+    <view class="item">
+      <text class="address-title"></text>
+      <view class="check-sex-wrap">
+        <view style="margin-right: 60rpx" bindtap="checkSexGirl">
+          <checkbox class="round" checked="{{checkSexGirlStatus ? true : false}}"></checkbox>
+          <text class="margin-left-sm text-sm">女士</text>
+        </view>
+        <view bindtap="checkSexBoy">
+          <checkbox class="round" checked="{{checkSexBoyStatus ? true : false}}"></checkbox>
+          <text class="margin-left-sm text-sm">先生</text>
+        </view>
+      </view>
+
+    </view>
+    <view class="item">
+      <text class="address-title">手机号</text>
+      <input placeholder-style="color: #D4D4D4" class="address-input" bindinput="bindinputMobile" name='phoneNumber' type="number" maxlength="11" bindblur="bindinputMobile" placeholder="请填写收货人手机号" value="{{tel}}" />
+    </view>
+    <view class="item">
+      <text class="address-title">收货地址</text>
+      <view class="flex justify-between align-center input" bindtap="goMap">
+        <input placeholder-style="color: #D4D4D4" disabled class="address-input" placeholder="点击选择收货地址" value="{{city}}" readonly="readonly"/>
+        <text class="fontIcon-right"></text>
+      </view>
+    </view>
+    <view class="item">
+      <text class="address-title">门牌号</text>
+      <input placeholder-style="color: #D4D4D4" class="address-input" bindinput="bindinputAddress" bindblur="bindinputAddress" value="{{addressDetail}}"  placeholder="详细地址，例如：尚都大厦2015" />
+    </view>
+    <view class="item">
+      <text class="address-title">标签</text>
+      <view class="address-tag">
+        <view
+          class="address-tag-item {{activeTag == item.value ? 'active-tag' : ''}}"
+          wx:for="{{addressTagData}}"
+          wx:for-index="index"
+          wx:for-item="item"
+          bindtap="selectAddressTag"
+          data-item="{{item.value}}"
+          wx:key="index">{{item.name}}</view>
+      </view>
+    </view>
+    <view class="item lastItem">
+      <view>
+        <view class="address-title">设为默认地址</view>
+        <view class="text-sm text-grey margin-top-xs">每次购物时会优先定位至该地址，方便您轻松购物</view>
+      </view>
+      <switch class="green" bindtap="bindIsDefault" checked="{{isDefault? true : false}}"></switch>
+    </view>
+  </view>
+</view>
+
+
+<!-- 保存 -->
+<button style="border-radius: 40rpx" class="btn bg-green radius-card block lg margin margin-tb-xl" bindtap="saveAddress">保存并使用</button>
+<button style="border-radius: 40rpx" class="btn bg-grey radius-card block lg margin" bindtap="deleteAddress" wx:if="{{addressId !== ''}}">删除地址</button>

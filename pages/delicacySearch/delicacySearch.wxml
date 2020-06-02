@@ -1,0 +1,66 @@
+<view id="home" style="height: 100%;">
+  <!-- 搜索 -->
+  <view class="bar fixed bg-white padding-lr-sm flex justify-between" id="header">
+    <view class="bar searchBox">
+      <view class="search-form round">
+        <text class="iconfont iconsousuo search-icon"></text>
+        <input name="input" class="keywrod" focus="true" value="{{keyword}}" confirm-type="search" bindinput="inputChange" bindfocus="inputFocus" bindconfirm="onKeywordConfirm" placeholder="{{defaultKeyword.keyword}}" />
+      </view>
+    </view>
+    <view class="cancel-btn" bindtap="closeSearch">取消</view>
+  </view>
+
+  <view class="no-search" wx:if="{{ !searchStatus}}">
+
+    <!-- 热门搜索 -->
+    <view class="bg-white padding-sm margin-top-sm" wx:if="{{!keyword && hotKeyword.length}}">
+
+      <view class="text-black margin-bottom hot-title">热门搜索</view>
+      <view class="hot-search-wrap">
+        <view class="hot-search-item {{item.is_hot === 1 ? 'active' : ''}}" hover-class="navigator-hover" bindtap="onKeywordTap" data-keyword="{{item.keyword}}" wx:for="{{hotKeyword}}" wx:key="id">{{item.keyword}}</view>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 搜索结果 -->
+  <view wx:if="{{ searchStatus }}">
+    <view class="bg-white sort">
+      <view class="flex justify-around align-center sort-box">
+        <view class="tabs-item {{currentSortType == 'default' ? 'text-green' : ''}}" bindtap="openSortFilter" id="defaultSort">综合</view>
+        <view class="tabs-item {{currentSortType == 'likeCount' ? 'text-green' : ''}}" bindtap="openSortFilter" id="likeCount">点赞</view>
+      </view>
+    </view>
+
+    <view class="tabs-con">
+      <view
+        class="con-item"
+        wx:for="{{delicacyArticleList}}"
+        wx:for-index="index"
+        wx:for-item="item"
+        wx:key="index">
+        <image src="{{item.coverImgUrl}}" data-id="{{item.id}}" bindtap="enterDelicacyDetail"></image>
+        <view class="con-tip" data-id="{{item.id}}" bindtap="enterDelicacyDetail">{{item.description}}</view>
+        <view class="con-bottom">
+          <view>时长：{{item.cookTime}}</view>
+          <view class="praised-wrap">
+            <text
+              class="iconfont icondianzan1 {{item.liked == 1 ? 'already-praised' : 'not-praised'}}"
+              data-id="{{item.id}}"></text>
+            <text style="margin-left: 18rpx">{{item.likeCount}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="nodata" style="width: 100%; margin-top: 20rpx" wx:if="{{noData}}">没有更多数据啦</view>
+    </view>
+
+  </view>
+
+  <!-- 没有搜索结果 -->
+  <view class="empty-data" wx:if="{{totalPages === 0 && searchStatus}}">
+    <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/search.png"></image>
+    <text>您寻找的商品还未上架</text>
+  </view>
+</view>
+

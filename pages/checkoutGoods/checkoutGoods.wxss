@@ -1,0 +1,8 @@
+.goodsItem{
+  height: calc(100vh - 40rpx);
+}
+
+.goodsItem .center {
+  width: calc(100% - 280rpx);
+  margin-left: 10rpx;
+}

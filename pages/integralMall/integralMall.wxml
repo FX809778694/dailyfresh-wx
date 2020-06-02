@@ -1,0 +1,17 @@
+<view class="banner">
+  <image src="/static/images/integralBan.jpg" mode="widthFix"></image>
+</view>
+
+<!-- 商品列表 -->
+<view class="goodsList" wx:if="{{goodsList.length >0}}">
+  <view wx:for="{{goodsList}}" wx:key="id" class="bg-white margin-bottom-sm">
+    <view class="padding-sm text-lg">{{title[index]}}</view>
+    <scroll-view scroll-x scroll-with-animation class="scroll-view">
+      <view wx:for="{{item.list}}" wx:for-index="number" wx:for-item="value" wx:key="id" class="padding-lr padding-bottom item">
+        <image src="{{swiperImgPrefix + value.picUrl}}" mode="widthFix"></image>
+        <view class="margin-tb-sm name">{{value.name}}</view>
+        <view class="text-green text-sm">10积分 + 9元</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

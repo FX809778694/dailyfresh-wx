@@ -1,0 +1,6 @@
+<view class="bg-white radius-card padding-sm margin-sm">
+  <view class="margin-bottom" wx:for="{{issueList}}" wx:key="id">
+    <view class="margin-bottom-xs">{{item.question}} </view>
+    <view class="text-gray text-sm">{{item.answer}} </view>
+  </view>
+</view>

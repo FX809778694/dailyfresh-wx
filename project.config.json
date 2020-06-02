@@ -1,0 +1,366 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"preloadBackgroundData": false,
+		"bundle": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.10.3",
+	"appid": "wxa4980b09f0a1cb2e",
+	"projectname": "dailyfresh-wx",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分类",
+					"pathName": "pages/catalog/catalog",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "商品",
+					"pathName": "pages/goods/goods",
+					"query": "id=1181199",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/cart/cart",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "下单",
+					"pathName": "pages/checkout/checkout",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "支付结果",
+					"pathName": "pages/payResult/payResult",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/ucenter/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的订单列表",
+					"pathName": "pages/ucenter/order/order",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "我的订单详情",
+					"pathName": "pages/ucenter/orderDetail/orderDetail",
+					"query": "id=4",
+					"scene": null
+				},
+				{
+					"id": 22,
+					"name": "待评价的订单详情",
+					"pathName": "pages/ucenter/orderDetail/orderDetail",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "购买商品评价",
+					"pathName": "pages/commentPost/commentPost",
+					"query": "orderId=2&type=0&valueId=1116011"
+				},
+				{
+					"id": 22,
+					"name": "我的优惠券",
+					"pathName": "pages/ucenter/couponList/couponList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "pages/ucenter/collect/collect",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的足迹",
+					"pathName": "pages/ucenter/footprint/footprint",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的地址",
+					"pathName": "pages/ucenter/address/address",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的地址添加",
+					"pathName": "pages/ucenter/addressAdd/addressAdd",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/auth/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "账号登录",
+					"pathName": "pages/auth/accountLogin/accountLogin",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/auth/register/register",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "找回密码",
+					"pathName": "pages/auth/reset/reset",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "意见反馈",
+					"pathName": "pages/ucenter/feedback/feedback",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "选择优惠券",
+					"pathName": "pages/ucenter/couponSelect/couponSelect",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的优惠券列表",
+					"pathName": "pages/ucenter/couponList/couponList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "优惠券列表",
+					"pathName": "pages/coupon/coupon",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "帮助中心",
+					"pathName": "pages/help/help",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "填写订单",
+					"pathName": "pages/checkout/checkout",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "设置",
+					"pathName": "pages/ucenter/setting/setting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "付款结果",
+					"pathName": "pages/payResult/payResult",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "凑单",
+					"pathName": "pages/addOrder/addOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "支付密码",
+					"pathName": "pages/ucenter/payPassword/payPassword",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "积分兑换",
+					"pathName": "pages/ucenter/integral/integral",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "地图",
+					"pathName": "pages/ucenter/addressMap/addressMap",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "预售",
+					"pathName": "pages/openToBook/openToBook",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "积分商城",
+					"pathName": "pages/integralMall/integralMall",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "秒杀列表",
+					"pathName": "pages/seckill/seckill",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 40,
+					"name": "美食社",
+					"pathName": "pages/delicacyList/delicacyList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 36,
+					"name": "美食社详情",
+					"pathName": "pages/delicacyDetail/delicacyDetail",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠券使用说明",
+					"pathName": "pages/ucenter/couponExplain/couponExplain",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "美食社搜索",
+					"pathName": "pages/delicacySearch/delicacySearch",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 39,
+					"name": "售后订单列表",
+					"pathName": "pages/buyService/orderList/orderList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 40,
+					"name": "售后商品列表",
+					"pathName": "pages/buyService/goodList/goodList",
+					"query": "id=9",
+					"scene": null
+				},
+				{
+					"id": 41,
+					"name": "售后的进度详情页",
+					"pathName": "pages/buyService/serviceDetail/serviceDetail",
+					"query": "aftersalesId=6",
+					"scene": null
+				},
+				{
+					"id": 42,
+					"name": "申请售后表单页面",
+					"pathName": "pages/buyService/serviceApply/serviceApply",
+					"query": "orderSn= 2020032820541231554836&goodsId=20",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "服务协议",
+					"pathName": "pages/auth/serviceAgreement/serviceAgreement",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "隐私政策",
+					"pathName": "pages/auth/privacyPolicy/privacyPolicy",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "配送地图页",
+					"pathName": "pages/ucenter/distributionMap/distributionMap",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 46,
+					"name": "模拟二维码参数进入",
+					"pathName": "pages/index/index",
+					"query": "co=18",
+					"scene": null
+				}
+			]
+		}
+	}
+}

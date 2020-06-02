@@ -1,0 +1,19 @@
+<view class="empty-data" wx:if="{{collectList.length <= 0}}">
+  <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/cart-empty.png" />
+  <text>还没有收藏</text>
+</view>
+
+<view class="flex justify-between flex-wrap padding-sm goods" wx:else>
+  <view class="bg-white radius-card padding-sm margin-bottom-sm item {{item.onSale?'':'grayscale'}}" bindtap="openGoods" bindtouchstart="touchStart" bindtouchend="touchEnd" wx:for="{{collectList}}" wx:key="id" data-index="{{index}}">
+    <navigator url="../goods/goods?id={{item.id}}" hover-class="none">
+      <image src="{{swiperImgPrefix + item.picUrl}}" mode="widthFix"></image>
+      <view class="margin-top-sm">{{item.name}}</view>
+      <view class="padding-tb-xs text-sm text-grey">{{item.brief}}</view>
+      <view>
+        <text class="text-price text-orange">{{item.retailPrice}}</text>
+        <text class="text-price text-grey text-sm text-line margin-left-sm">{{item.marketPrice}}</text>
+      </view>
+    </navigator>
+    <view class="btn bg-gray radius margin-top-sm" wx:if="{{!item.onSale}}">已下架</view>
+  </view>
+</view>

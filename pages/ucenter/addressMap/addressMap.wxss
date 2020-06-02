@@ -1,0 +1,51 @@
+/* 搜索框 */
+.search {
+  position: relative;
+}
+
+.search.on {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 100;
+  display: block;
+  padding-top: 20rpx;
+}
+
+.search .search-box {
+  width: 100%;
+  position: relative;
+  z-index: 100;
+}
+
+.search .item {
+  position: absolute;
+  top: 100rpx;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 100rpx);
+  z-index: 99;
+  overflow-y: auto;
+}
+
+/* 附近地址 */
+.mapList .img{
+  width: 30rpx;
+}
+
+.mapList image{
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.mapList .content{
+  width: calc(100% - 180rpx);
+  padding: 0 20rpx;
+}
+
+.mapList .distance{
+  width: 150rpx;
+}

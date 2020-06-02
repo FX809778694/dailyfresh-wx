@@ -1,0 +1,73 @@
+<view id="home">
+
+  <view class="main-top">
+
+    <!-- 搜索 -->
+    <view class="header-search padding-lr" id="header">
+      <navigator url="/pages/delicacySearch/delicacySearch" hover-class="none">
+        <view class="bar">
+          <view class="search-form round">
+            <text class="iconfont iconsousuo search-icon"></text>
+            <input disabled="true" type="text" placeholder="搜索菜谱食材等" confirm-type="search"></input>
+          </view>
+        </view>
+      </navigator>
+    </view>
+
+    <view class="recommend-title">经典推荐</view>
+    <view class="recommend-wrap">
+      <scroll-view class="scroll-recommend" scroll-x="true" style="width: 100%; height: 100%">
+        <view
+          class="recommend-item"
+          wx:for="{{recommendData}}"
+          wx:for-index="index"
+          wx:for-item="item"
+          wx:key="index"
+          data-id="{{item.id}}"
+          bindtap="enterDelicacyDetail">
+          <image src="{{item.coverImgUrl}}"></image>
+          <view class="item-name"><text>{{item.name}}</text></view>
+        </view>
+      </scroll-view>
+    </view>
+
+  </view>
+
+  <view class="today-title">今日推荐</view>
+
+  <view class="list-wrap-tabs">
+    <view class="list-wrap-fixed {{fixedTabs ? 'fixed-tabs' : ''}}" id="fixed-header" wx:if="!clickSelectClassify">
+      <scroll-view class="scroll-header" scroll-x="true" style="width: 100%; height: 100%">
+        <view class="scroll-shop-item"  wx:for="{{tabsData}}" wx:key="id" bindtap="selectClassifyHandle" data-id="{{item.id}}">
+          <view class="time-shop-b {{tabsActive === item.id ? 'active-shop-b' : ''}}">{{item.classifyName}}</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="tabs-con">
+    <view
+      class="con-item"
+      wx:for="{{contentListData}}"
+      wx:for-index="index"
+      wx:for-item="item"
+      wx:key="index">
+      <image src="{{item.coverImgUrl}}" data-id="{{item.id}}" bindtap="enterDelicacyDetail"></image>
+      <view class="con-tip" data-id="{{item.id}}" bindtap="enterDelicacyDetail">{{item.description ? item.description : item.name}}</view>
+      <view class="con-bottom">
+        <view>时长：{{item.cookTime}}</view>
+        <view class="praised-wrap">
+          <text
+            class="iconfont icondianzan1 {{item.liked == 1 ? 'already-praised' : 'not-praised'}}"
+            data-id="{{item.id}}"></text>
+          <text style="margin-left: 18rpx">{{item.likeCount}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="nodata" style="width: 100%; margin-top: 20rpx" wx:if="{{noData}}">没有更多数据啦</view>
+  </view>
+
+</view>
+
+<backTop wx:if="{{showTopBtn}}" bindtoTopHandle="toTopHandle"></backTop>

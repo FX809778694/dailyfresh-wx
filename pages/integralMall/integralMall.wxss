@@ -1,0 +1,11 @@
+
+.banner image {
+  width: 100%;
+  height: 390rpx;
+}
+
+/* 商品列表 */
+.goodsList .item {
+  width: calc(100vw / 3.2);
+  display: inline-block;
+}

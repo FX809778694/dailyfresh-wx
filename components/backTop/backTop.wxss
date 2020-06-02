@@ -1,0 +1,21 @@
+/* components/backTop.wxss */
+@import "../../static/style/icon.wxss";
+
+.back-top-wrap{
+  position: fixed;
+  right: 0;
+  bottom: 140rpx;
+  background: #fff;
+  width: 54rpx;
+  height: 54rpx;
+  box-shadow: 0 0 6rpx 0 rgba(0,0,0,0.18);
+  border-radius: 50%;
+  z-index: 999999;
+  text-align: center;
+  line-height: 54rpx;
+}
+
+.iconzhiding{
+  font-size: 32rpx;
+  color: #333333;
+}

@@ -1,0 +1,84 @@
+.login {
+  position: relative;
+}
+
+.login .setting {
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  font-size: 36rpx;
+}
+
+.icon {
+  padding-bottom: 10rpx;
+  font-size: 48rpx;
+}
+
+.orderList>view {
+  position: relative;
+}
+
+.orderList .badge {
+  right: 30rpx
+}
+.my-top-wrap{
+  position: relative;
+}
+.user-bg{
+  width: 100%;
+  height: 310rpx;
+}
+.my-top{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.userpic-l{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.login-username-btn{
+  font-size: 32rpx;
+  color: #fff;
+  margin-left: 20rpx;
+}
+.user-info-wrap{
+  color: #fff;
+  font-size: 24rpx;
+  padding: 0 20rpx;
+  padding-top: 8rpx;
+}
+.user-info-num{
+  font-size: 30rpx;
+}
+.order-title{
+  color: #333333;
+  font-size: 30rpx;
+}
+.order-title-l{
+  color: #999999;
+}
+.order-title-l, .iconfont{
+  font-size: 12px;
+  margin-left: 4rpx;
+}
+
+.order-icon{
+  width: 34rpx;
+  height: 28rpx;
+  display: inline-block;
+  margin-bottom: 10rpx;
+}
+.car-icon{
+  width: 38rpx;
+  height: 28rpx;
+}
+.service-icon{
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-block;
+  margin-bottom: 10rpx;
+}

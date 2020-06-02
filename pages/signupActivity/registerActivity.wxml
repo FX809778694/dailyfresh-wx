@@ -1,0 +1,67 @@
+<view class="activity">
+	<scroll-view class="scroll-shop-list" scroll-y bindscroll="indexScrollHandle" bindscrolltolower="indexScrollBottom" scroll-top="{{topNum}}">
+
+		<!-- 搜索banner部分 -->
+		<view class="index-top-bg">
+			<image class="top-bg-image" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/sign_up_activity_bg.png"></image>
+		</view>
+
+
+
+		<view class="gift_container">
+
+			<!-- 热销商品 -->
+			<view style="height: 290rpx" class="gift" id="hotGoods">
+				<view>
+					<text class="gift_title">第一重好礼： 108元专享券</text>
+					<image class="split_line" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/activity_split_line.png"></image>
+				</view>
+				<scroll-view scroll-x scroll-with-animation class="scroll-view coupon_list">
+					<view wx:for="{{couponList}}" wx:key="coupon" class=" item" bindtap="goClassify">
+							<view class="discount">{{item.discount}}</view>
+							<view class="min">满{{item.min}}元可用</view>
+							<text class="line"></text>
+							<view class="to_use">
+								<view wx:if="{{item.status == 0 }}" class="to_use_btn"> 立即使用 </view>
+								<view wx:elif="{{item.status == 1 }}" class="to_use_btn"> 已使用 </view>
+								<view wx:elif="{{item.status == 2 }}" class="to_use_btn"> 已过期 </view>
+								<view wx:else class="to_use_btn"> 已下架 </view>
+							</view>
+					</view>
+				</scroll-view>
+			</view>
+
+			<!-- 商品区域 -->
+			<view class="gift second">
+				<view>
+					<text class="gift_title second">第二重好礼： 新人专享价</text>
+					<image class="split_line" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/activity_split_line.png"></image>
+				</view>
+				<view class="shop-list">
+					<view wx:for="{{goodsData}}" wx:for-index="index" wx:for-item="item" wx:key="index" class="goods_item">
+						<navigator url="../goods/goods?id={{item.id}}" hover-class="none">
+							<view class="img">
+								<image src="{{item.picUrl}}" mode="widthFix"></image>
+							</view>
+							<view class="margin-tb-sm name shop-name">{{item.name}}</view>
+							<view class="bottom">
+								<view class="price">
+									<text class="text-price text-grey text-line" >{{item.marketPrice}}</text>
+									<text class="text-price text-orange text-lg">{{item.retailPrice}}</text>
+								</view>
+								<view class="iconfont iconjian avatar shop-add-btn" data-item="{{item}}" data-index="{{index}}">
+									<text class="tag badge bg-orange" wx:if="{{value.number}}">{{item.number}}</text>
+								</view>
+							</view>
+
+						</navigator>
+
+
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="nodata" wx:if="{{noData}}">没有更多数据啦</view>
+
+	</scroll-view>
+</view>

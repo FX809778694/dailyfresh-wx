@@ -1,0 +1,81 @@
+.login {
+  background: #fff;
+  height: 100vh;
+  padding: 0 50rpx;
+  position: relative;
+}
+
+.login-input-wrap{
+  position: relative;
+}
+.send-btn{
+  position: absolute;
+  right: 10rpx;
+  bottom: 150rpx;
+  width: 160rpx;
+  height: 56rpx;
+  border: 1rpx solid #E8E8E8;
+  border-radius: 8rpx;
+  line-height: 56rpx;
+  color: #333333;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.login-title{
+  font-size: 42rpx;
+  color: #0D0D0D;
+  padding-top: 60rpx;
+  font-weight: 500;
+}
+
+.login-input{
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 28rpx;
+}
+.login-input text{
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+}
+.login-input input{
+  margin-left: 30rpx;
+}
+
+.login button {
+  border-radius: 40rpx;
+}
+
+.line{
+  height: 1rpx;
+  background: #E6E6E6;
+  margin-top: 26rpx;
+}
+
+.wx-login{
+  background: #1EAC52;
+  color: #FFFFFF;
+  font-size: 32rpx;
+  margin-top: 50rpx;
+}
+.phone-login{
+  font-size: 24rpx;
+  color: #5F6EB1;
+  text-align: center;
+}
+
+.login-agreement{
+  width: 440rpx;
+  position: absolute;
+  left: 50%;
+  margin-left: -220rpx;
+  bottom: 40rpx;
+  font-size: 24rpx;
+  color: #333333;
+}
+.login-agreement text{
+  color: #596CC0;
+}

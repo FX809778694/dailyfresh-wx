@@ -1,0 +1,4 @@
+
+<view class="back-top-wrap" bindtap="toTopHandle">
+  <text class="iconfont iconzhiding"></text>
+</view>

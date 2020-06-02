@@ -1,0 +1,19 @@
+<view class="empty-data" wx:if="{{footprintList.length <= 0}}">
+  <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/cart-empty.png" />
+  <text>没有浏览足迹</text>
+</view>
+
+<view wx:if="{{footprintList.length > 0}}">
+  <view wx:for="{{footprintList}}" wx:key="*this" wx:for-index="index">
+    <view class="padding-top-xl padding-bottom-sm text-grey text-center" wx:if="{{item.length > 0}}">{{item[0].addDate}}</view>
+
+    <view wx:if="{{item.length > 0}}" class="flex justify-between flex-wrap padding-sm goods">
+      <view data-index="{{index}}" data-iindex="{{iindex}}" bindtouchstart="touchStart" bindtouchend="touchEnd" bindtap="deleteItem" wx:for="{{item}}" wx:for-index="iindex" wx:for-item="iitem" wx:key="id" class="bg-white radius-card padding-sm margin-bottom-sm item">
+        <image src="{{swiperImgPrefix + iitem.picUrl}}" mode="widthFix"></image>
+        <view>{{iitem.name}}</view>
+        <view class="text-grey text-sm">{{iitem.brief}}</view>
+        <view class="text-price text-orange text-lg margin-top-sm">{{iitem.retailPrice}}</view>
+      </view>
+    </view>
+  </view>
+</view>

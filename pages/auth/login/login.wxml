@@ -1,0 +1,14 @@
+<view class="login">
+
+  <image src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/logo.png" class="logo-img"></image>
+  <view class="bg-white radius-card">
+    <view>
+      <button class="wx-login" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信用户一键登录</button>
+    </view>
+    <view class="margin-top-xl">
+      <view class="phone-login" bindtap="accountLogin">手机号验证码注册/登录</view>
+    </view>
+  </view>
+
+  <view class="login-agreement">我已认证阅读并同意<text bindtap="enterServiceAgreement">服务协议</text>及<text bindtap="enterPrivacyPolicy">隐私政策</text></view>
+</view>

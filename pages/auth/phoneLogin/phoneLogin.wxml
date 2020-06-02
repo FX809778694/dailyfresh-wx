@@ -1,0 +1,32 @@
+<view class="login">
+
+  <view class="login-input-wrap">
+    <view class="login-title">登录</view>
+    <form bindsubmit='login'>
+
+      <view class="login-input">
+        <text>手机号</text>
+        <input name='phoneNumber' type="number" maxlength="11" bindinput="phoneInputHandle" placeholder="请输入手机号" placeholder-class="bio-ph" focus="true" value="{{phoneNumber}}" />
+      </view>
+      <view class="login-input">
+        <text>验证码</text>
+        <input name='verifyCode' type="number" maxlength="6" placeholder="请输入验证码" placeholder-class="bio-ph" password="true" value="{{verifyCode}}" />
+      </view>
+
+      <view class="send-btn" bindtap="sendVerifyCode">{{verifyClockText}}</view>
+
+      <view class="line"></view>
+
+      <button class="wx-login" form-type="submit">登录</button>
+    </form>
+
+  </view>
+
+  <view class="bg-white radius-card">
+    <view class="margin-top-xl">
+      <view class="phone-login" bindtap="enterLogin">通过微信授权登录</view>
+    </view>
+  </view>
+
+  <view class="login-agreement">我已认证阅读并同意<text>服务协议</text>及<text>隐私政策</text></view>
+</view>

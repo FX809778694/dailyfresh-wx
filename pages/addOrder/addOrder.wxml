@@ -1,0 +1,26 @@
+<view class="flex justify-around flex-wrap padding-xs padding-top-sm goods">
+  <view wx:for="{{goodsList}}" wx:key="id" class="bg-white radius-card padding-sm margin-bottom-sm goodsItem">
+    <navigator url="../goods/goods?id={{item.id}}" hover-class="none">
+      <image src="{{swiperImgPrefix + item.picUrl}}"></image>
+
+      <view>
+        <view class="padding-top-sm name">{{item.name}}</view>
+        <view class="price">
+          <view class="text-price text-green text-lg">{{item.retailPrice}}</view>
+          <view class="text-price text-line text-grey padding-top-xs">{{item.marketPrice}}</view>
+        </view>
+      </view>
+    </navigator>
+
+    <view class="avatar iconfont iconjian addToCart" data-item-index="{{index}}" bindtap="addToCart"></view>
+  </view>
+</view>
+
+<view class="bg-white padding-lr-sm flex justify-between align-center cartBottom ">
+  <view wx:if="{{gapPrice > 0}}">实付满{{minFreight}}元包邮，还差
+    <text class="text-green">{{gapPrice}}</text>元
+  </view>
+  <view wx:else></view>
+
+  <view class="btn bg-green radius" bindtap="goCart">去购物车</view>
+</view>

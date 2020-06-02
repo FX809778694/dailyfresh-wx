@@ -1,0 +1,3 @@
+.goods .item{
+  width: calc(50% - 10rpx)
+}

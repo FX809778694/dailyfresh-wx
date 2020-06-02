@@ -1,0 +1,171 @@
+<view class="container">
+  <!-- 商品展示图 -->
+  <swiper class="bg-white goodsBanner" autoplay="true" interval="3000" duration="400" bindchange="swiperChangeHandle">
+    <swiper-item wx:for="{{goods.gallery}}" wx:key="*this">
+      <image class="detail-swiper-img" src="{{swiperImgPrefix + item}}"></image>
+    </swiper-item>
+  </swiper>
+  <view class="banner-num-wrap">
+    <text>{{swiperActive}}</text>
+    <text style="padding: 0 4rpx">/</text>
+    <text>{{goods.gallery.length}}</text>
+  </view>
+
+  <!-- 限时抢购 -->
+  <view class="skill-wrap" wx:if="{{goods.goodsFlashPrice && goods.flashGoodsStock > 0}}">
+    <view class="skill-wrap-title">
+      <text>限时</text>
+      <text>抢购</text>
+    </view>
+    <view class="skill-price-wrap">
+      <view class="skill-price-t"><text>￥</text>{{goods.goodsFlashPrice}}</view>
+      <view class="skill-price-b">￥{{goods.retailPrice}}</view>
+    </view>
+
+    <view class="skill-time">
+      <view class="skill-time-title">距离结束还剩</view>
+      <view class="skill-title">
+        <text class="clock-con-item">{{clockHr}}</text>
+        <text class="clock-con-colon">:</text>
+        <text class="clock-con-item">{{clockMin}}</text>
+        <text class="clock-con-colon">:</text>
+        <text class="clock-con-item">{{clockSec}}</text>
+        <text class="clock-con-colon">:</text>
+        <text class="clock-con-item" style="background: #3AB44B">{{microSec}}</text>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 商品信息 -->
+  <view class="bg-white padding-sm">
+    <view class="text-xl margin-tb-sm detail-item-title">{{goods.name}}</view>
+    <view class="margin-bottom-xs">{{goods.brief}}</view>
+    <view wx:if="{{!goods.goodsFlashPrice}}">
+      <text class="text-xl text-orange text-price">{{checkedSpecPrice}}</text>
+      <text class="text-grey text-price text-line margin-left-sm">{{goods.marketPrice}}</text>
+    </view>
+  </view>
+
+  <!-- 相关做法 -->
+  <view class="bg-white padding-sm margin-top-sm" wx:if="{{foodsAryData.length > 0}}">
+    <view class="margin-bottom text-lg detail-item-title">相关做法</view>
+    <scroll-view scroll-x scroll-with-animation class="scroll-view">
+      <view
+        class="foods-scroll-item"
+        bindtap="enterDelicacyDetail"
+        wx:for="{{foodsAryData}}"
+        wx:for-index="index"
+        wx:for-item="item"
+        wx:key="index"
+        data-id="{{item.id}}">
+        <image src="{{item.coverImgUrl}}"></image>
+        <view class="foods-scroll-item-p">{{item.name}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 商品参数 -->
+  <view class="bg-white padding-sm margin-top-sm" wx:if="{{attribute.length > 0}}">
+
+    <view class="margin-bottom text-lg detail-item-title">商品参数</view>
+
+    <view class="goods-attribute-table">
+      <view wx:for="{{attribute}}" wx:key="name" class="goods-attributed-item">
+        <text class="attributed-item-key">{{item.attribute}}</text>
+        <text class="attributed-item-value">{{item.value}}</text>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 商品详情 -->
+  <view class="bg-white padding-sm margin-top-sm">
+    <view class="margin-bottom text-lg detail-item-title">商品详情</view>
+    <rich-text class="detail-rich-wrap" nodes="{{goods.detail}}"></rich-text>
+  </view>
+
+  <!-- 大家都在看 -->
+  <view class="bg-white padding-sm margin-top-sm related-goods" wx:if="{{relatedGoods.length > 0}}">
+    <view class="margin-bottom text-lg detail-item-title">猜你喜欢</view>
+    <scroll-view scroll-x scroll-with-animation class="scroll-view">
+      <view class="margin-right-sm item related-goods-item" wx:for="{{relatedGoods}}" wx:key="id">
+        <view class="padding-xs">
+          <navigator class="like-wrap" url="../goods/goods?id={{item.id}}" hover-class="none">
+            <image class="goodsImg" src="{{swiperImgPrefix + item.picUrl}}"></image>
+            <view class="margin-tb-sm name">{{item.name}}</view>
+            <view class="text-price text-orange text-lg">{{item.retailPrice}}</view>
+            <view class="text-price text-grey text-line">{{item.marketPrice}}</view>
+          </navigator>
+
+          <view class="iconfont iconjian avatar" data-goodsId="{{item.id}}" bindtap="addCart">
+          <text wx:if="{{item.number}}" class="tag badge bg-orange">{{item.number}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+
+  <!-- 常见问题 -->
+  <view class="bg-white padding-sm margin-top-sm common-problem">
+    <view class="margin-bottom text-lg detail-item-title">常见问题</view>
+    <view wx:for="{{issueList}}" wx:key="id" class="margin-bottom common-problem-item">
+      <view class="margin-bottom-xs problem-item-title"><text class="problem-item-title-circle"></text>{{item.question}}</view>
+      <view class="text-grey text-sm problem-item-content">{{item.answer}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 规格选择界面 -->
+<view class="attr-pop-box" hidden="{{!openAttr}}">
+  <view class="attr-pop">
+    <view class="close" bindtap="closeAttr">
+      <image class="icon" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/icon_close.png"></image>
+    </view>
+    <view class="img-info">
+      <image class="img" src="{{swiperImgPrefix + goods.picUrl}}"></image>
+      <view class="info">
+        <view class="c">
+          <view class="p">价格：￥{{checkedSpecPrice}}</view>
+          <view class="a">{{tmpSpecText}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 规格列表 -->
+    <view class="spec-con">
+      <view class="spec-item" wx:for="{{specificationList}}" wx:key="name">
+        <view class="name">{{item.name}}</view>
+        <view class="values">
+          <view class="value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="specification" data-value-id="{{vitem.id}}" data-name="{{vitem.specification}}">{{vitem.value}}</view>
+        </view>
+      </view>
+
+      <!-- 数量 -->
+      <view class="number-item">
+        <view class="name">数量</view>
+        <view class="selnum">
+          <view class="cut" bindtap="cutNumber">-</view>
+          <input value="{{number}}" class="number" disabled="true" type="number" />
+          <view class="add" bindtap="addNumber">+</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 底部按钮 -->
+<view class="bg-white flex solid-top bottom-btn {{isIphoneX ? 'bottom-btn-iphone-x': ''}}">
+  <view class="padding-sm collect" bindtap="addCollectOrNot">
+    <text class="iconfont collect-icon {{userHasCollect ? 'iconshoucang1' : 'iconshouc'}}"></text>
+  </view>
+  <view class="padding-sm cart">
+    <text class="iconfont icongouwuche" bindtap="openCartPage"></text>
+    <text class="tag badge bg-orange">{{cartGoodsCount}}</text>
+  </view>
+  <view class="btn bg-green add-car-btn" bindtap="addToCart" wx:if="{{!soldout}}">加入购物车</view>
+  <view class="btn bg-orange margin-left-sm soldout" wx:if="{{soldout}}">商品已售空</view>
+</view>
+
+<backTop wx:if="{{showTopBtn}}" bindtoTopHandle="toTopHandle"></backTop>

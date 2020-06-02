@@ -1,0 +1,43 @@
+
+page{
+  background: #fff;
+  height: 100%;
+}
+
+.main-wrap{
+  height: 100%;
+}
+
+.distributor-info{
+  position: fixed;
+  bottom: 100rpx;
+  background: #fff;
+  width: 94%;
+  margin-left: 3%;
+  border-radius: 8rpx;
+  box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.2);
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.distributor-circle{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 30rpx;
+  background: #3AB44B;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 80rpx;
+}
+.iconswticonkuaidi1{
+  font-size: 50rpx;
+  color: #fff;
+}
+.icondianhua{
+  font-size: 60rpx;
+  color: #3AB44B;
+}
+.item-content{
+flex: 1;
+}

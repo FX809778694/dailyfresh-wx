@@ -1,0 +1,63 @@
+<!-- 搜索框 -->
+<view class="bg-white search">
+  <navigator url="/pages/search/search" class="bar" hover-class="none">
+    <view class="search-form round">
+      <text class="fontIcon-search"></text>
+      <input type="text" placeholder="商品搜索, 共{{goodsCount}}款好物" confirm-type="search"></input>
+    </view>
+  </navigator>
+</view>
+
+<!-- 一级目录 -->
+<scroll-view scroll-y="true" class="bg-gray text-center side">
+  <view class="item {{ currentCategory.id == item.id ? 'active' : ''}}" wx:for="{{categoryList}}" wx:key="oneClassify" data-id="{{item.id}}" bindtap="switchCate">{{item.name}}</view>
+</scroll-view>
+
+
+<!-- 二级目录 -->
+<view class="childClassify" wx:if="{{currentSubCategoryList.length > 0}}">
+  <scroll-view scroll-x scroll-into-view="{{toChildClassify}}" scroll-with-animation class="padding-tb-xs scroll-view">
+    <view class="item {{id == masterId ? 'active' : ''}}" bindtap="allClassify">全部</view>
+    <view wx:for="{{currentSubCategoryList}}" wx:key="childClassify" id="id-{{item.id}}" class="item {{id == item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="switchChildClassify">{{item.name}}</view>
+  </scroll-view>
+  <view class="allClassify {{isAllClassify?'showClassify':'hideClassify'}}">
+    <view class="text-sm text-grey padding-sm">全部分类</view>
+    <view class="grid padding-xs">
+      <view class="list {{id == masterId ? 'active' : ''}}" bindtap="allClassify">全部</view>
+      <view wx:for="{{currentSubCategoryList}}" wx:key="childClassifyAll" id="id-{{item.id}}" class="list {{id == item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="switchChildClassify">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="arrows {{isAllClassify?'fontIcon-fold':'fontIcon-unfold'}}" bindtap="toggleClassify"></view>
+</view>
+
+<view class="bg-white catalog">
+
+
+  <!-- 商品列表 -->
+  <view wx:for="{{goodsList}}" wx:key="goodsList" class="goodsItem">
+    <navigator url="../goods/goods?id={{item.id}}" hover-class="none" class="padding-lr-sm">
+      <view class="flex align-center padding-tb-sm solid-bottom item">
+        <view class="avatar radius lg margin-right">
+          <image src="{{swiperImgPrefix + item.picUrl}}"></image>
+        </view>
+        <view>
+          <view>{{item.name}}</view>
+          <view class="text-grey text-sm">{{item.brief}}</view>
+          <view class="text-grey margin-top-xs">
+            <text class="text-price text-orange margin-right-xs">{{item.retailPrice}}</text>
+            <text class="text-price text-sm text-grey text-line">{{item.marketPrice}}</text>
+          </view>
+        </view>
+      </view>
+    </navigator>
+
+    <view class="flex justify-end align-center addRemoveNum">
+      <view class="iconfont iconjia round" wx:if="{{item.number > 0}}" bindtap="cutNumber" data-item-index="{{index}}"></view>
+      <input class="text-center" wx:if="{{item.number > 0}}" value="{{item.number}}" disabled="true" type="number" />
+      <view class="iconfont iconjian round" bindtap="addNumber" data-item-index="{{index}}"></view>
+    </view>
+  </view>
+
+  <view class="padding-xl text-grey text-center" wx:if="{{ shopTotal > limit && noGoodsFlag }}">没有更多商品了</view>
+  <view class="padding-xl text-grey text-center no-more" wx:if="{{ shopTotal < limit }}">没有更多商品了</view>
+</view>

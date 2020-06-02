@@ -1,0 +1,48 @@
+/* 搜索 */
+
+.searchBox {
+  width: calc(100% - 120rpx);
+}
+
+.searchBox .search-form {
+  margin: 0;
+}
+
+/* 搜索词 */
+
+.no-search {
+  height: auto;
+  overflow: hidden;
+  margin-top: 100rpx;
+}
+
+/* 搜索结果条件 */
+
+.sort {
+  position: fixed;
+  top: 100rpx;
+  width: 100%;
+  z-index: 9
+}
+
+.sort .sort-box {
+  height: 80rpx;
+}
+
+/* 搜索结果列表 */
+
+.cate-item {
+  margin-top: 180rpx;
+  height: auto;
+  overflow: hidden;
+}
+
+.cate-item .item {
+  width: calc(50% - 10rpx);
+}
+
+.search-icon{
+  color: #B6B6B6;
+  margin: 0 10rpx;
+  margin-left: 20rpx;
+}

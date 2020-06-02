@@ -1,0 +1,70 @@
+<view class="main-wrap">
+
+  <view class="order-tabs">
+    <view class="tabs-item" data-item="0" bindtap="selectTabs">
+      <text class="tabs-item-p {{tabsActive == 0 ? 'tabs-active' : ''}}">申请售后</text>
+    </view>
+    <view class="tabs-item" data-item="1" bindtap="selectTabs">
+      <text class="tabs-item-p {{tabsActive == 1 ? 'tabs-active' : ''}}">售后记录</text>
+    </view>
+  </view>
+
+  <view
+    class="list-item"
+    wx:for="{{listData}}"
+    wx:key="index"
+    wx:for-item="one"
+    wx:if="{{listData.length > 0 && tabsActive === '0'}}">
+    <view class="item-top">
+      <image class="item-shop-img" src="{{one.picUrl}}"></image>
+      <view class="item-content">
+        <view class="content-l">
+          <text class="l-name">{{one.goodsName}}</text>
+          <text class="l-num">数量：{{one.number}} 可申请数量：{{one.number}}</text>
+        </view>
+        <view class="content-r">¥{{one.isFlashGoods ? one.flashPrice : one.price}}</view>
+      </view>
+    </view>
+    <view class="item-btn" data-item="{{one}}" data-goods-id="{{one.id}}" bindtap="enterApplyService">
+      <text>申请售后</text>
+    </view>
+
+  </view>
+
+  <view
+    class="list-item"
+    wx:for="{{serviceListData}}"
+    wx:key="index"
+    wx:for-item="one"
+    wx:if="{{serviceListData.length > 0 && tabsActive === '1'}}">
+
+    <view class="apply-record-item">
+      <view class="apply-record-top" data-id="{{one.aftersales.aftersalesId}}" bindtap="enterApplyDetail">
+        <text style="color: #333333">当前状态</text>
+        <view style="color: #3AB44B;" wx:if="{{one.aftersales.aftersalesStatus == 0}}">待审核</view>
+        <view style="color: #3AB44B;" wx:if="{{one.aftersales.aftersalesStatus == 1}}">已拒绝</view>
+        <view style="color: #3AB44B;" wx:if="{{one.aftersales.aftersalesStatus == 2}}">已通过</view>
+        <view style="color: #3AB44B;" wx:if="{{one.aftersales.aftersalesStatus == 3}}">退款中</view>
+        <view style="color: #3AB44B;" wx:if="{{one.aftersales.aftersalesStatus == 4}}">退款成功</view>
+      </view>
+      <view class="item-apply-top" data-id="{{one.aftersales.aftersalesId}}" bindtap="enterApplyDetail">
+        <image class="item-shop-img" src="{{one.orderGoods.picUrl}}"></image>
+        <view class="item-content">
+          <view class="content-l">
+            <text class="l-name">{{one.orderGoods.goodsName}}</text>
+            <text class="l-num">数量：{{one.orderGoods.number}} 申请数量：{{one.aftersales.applyNum}}</text>
+          </view>
+          <view class="content-r">¥{{one.orderGoods.isFlashGoods ? one.orderGoods.flashPrice : one.orderGoods.price}}</view>
+        </view>
+      </view>
+      <view class="apply-bottom">
+        <view class="order-time">{{one.aftersales.createTime}}</view>
+        <view class="cancel-btn" data-id="{{one.aftersales.aftersalesId}}" bindtap="cancelApply" wx:if="{{one.aftersales.aftersalesStatus == 0}}">撤销申请</view>
+      </view>
+    </view>
+
+  </view>
+
+
+
+</view>

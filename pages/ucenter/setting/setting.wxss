@@ -1,0 +1,9 @@
+.btn {
+  width: 100%;
+  color: #000;
+}
+
+.logout-btn{
+  padding: 20rpx;
+  margin-top: 40rpx;
+}

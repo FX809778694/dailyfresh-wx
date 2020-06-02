@@ -1,0 +1,33 @@
+<view class="container">
+
+  <scroll-view class="coupon-list" scroll-y="true" scroll-top="{{scrollTop}}">
+
+    <view class="unselect" bindtap='unselectCoupon'>不选择优惠券</view>
+
+    <view class="coupon-list-item" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="item" wx:key="id" bindtap="selectCoupon" data-id="{{item.id}}" data-cid="{{item.cid}}">
+      <view class="coupon-item-l">
+        <image class="coupon-img" src="{{item.type == 1 ? 'https://niuniu-wx.oss-cn-beijing.aliyuncs.com/coupon-icon-1.png' : item.type == 0 ? 'https://niuniu-wx.oss-cn-beijing.aliyuncs.com/coupon-icon-2.png' : 'https://niuniu-wx.oss-cn-beijing.aliyuncs.com/coupon-icon-3.png'}}"></image>
+        <view class="coupon-item-l-con">
+          <view class="l-price"><text>￥</text>{{item.discount}}</view>
+          <view class="l-tip">满{{item.min}}元可使用</view>
+        </view>
+      </view>
+      <view class="coupon-item-r">
+        <view class="item-r-title">
+          <view class="r-coupon-quantity {{item.type == 1 ? 'background-color1' : ''}} {{item.type == 0 ? 'background-color2' : ''}} {{item.type == 2 ? 'background-color3' : ''}}">{{item.tag}}</view>
+          <text>{{item.name}}</text>
+        </view>
+        <view class="use-time">{{item.startTime}} - {{item.endTime}}</view>
+        <view class="item-r-b">
+          <view class="coupon-tip">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{count == 0}}" class="no-coupon-wrap">
+      <image class="no-coupon-wrap-img" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/no-coupon.png"></image>
+      <view class="no-coupon-wrap-p">暂无可用优惠券</view>
+    </view>
+
+
+  </scroll-view>
+</view>

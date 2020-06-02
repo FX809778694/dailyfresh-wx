@@ -1,0 +1,145 @@
+/* 搜索框 */
+
+.search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  z-index: 9;
+}
+
+/* 一级目录 */
+
+.side {
+  position: fixed;
+  top: 100rpx;
+  left: 0;
+  width: 200rpx;
+  height: calc(100vh - 100rpx);
+  z-index: 2;
+}
+
+.side .item {
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.side .active {
+  background: #fff;
+  color: #39b54a;
+  position: relative;
+}
+
+.side .active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6rpx;
+  height: 40rpx;
+  background: #39b54a;
+}
+
+/* 二级目录 */
+
+.catalog {
+  width: 100%;
+  min-height: 100vh;
+  padding: 100rpx 0 0 200rpx;
+  position: relative;
+  padding-top: 180rpx;
+}
+
+.childClassify {
+  width: 540rpx;
+  height: 80rpx;
+  position: fixed;
+  top: 100rpx;
+  left: 210rpx;
+  background: #fff;
+  z-index: 999;
+}
+
+.childClassify .scroll-view {
+  width: calc(100% - 80rpx);
+}
+
+.childClassify .arrows {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.childClassify .scroll-view .item {
+  margin-left: 10rpx;
+  padding: 0 20rpx;
+  height: 60rpx;
+  font-size: 22rpx;
+  border: 1rpx solid #eee;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6rpx;
+}
+
+.childClassify .scroll-view .item.active {
+  border: 1rpx solid #39b54a;
+  color: #39b54a;
+}
+
+.childClassify .allClassify {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 3;
+}
+
+.childClassify .allClassify.hideClassify {
+  display: none;
+}
+
+.childClassify .allClassify.showClassify {
+  display: block;
+}
+
+.childClassify .list {
+  margin: 0 10rpx 20rpx;
+  width: calc(100% / 3 - 20rpx);
+  height: 60rpx;
+  font-size: 22rpx;
+  border: 1rpx solid #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6rpx;
+}
+
+.childClassify .list.active {
+  border: 1rpx solid #39b54a;
+  color: #39b54a;
+}
+
+/* 商品列表 */
+
+.goodsItem {
+  position: relative;
+}
+
+
+.goodsItem .addRemoveNum {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  width: 150rpx;
+}
+

@@ -1,0 +1,27 @@
+<view class="container text-center" wx:if="{{isShow}}">
+  <view class="content" wx:if="{{status}}">
+    <view class="text-lg text-orange padding-tb-xl">付款成功</view>
+    <view class="margin-tb-xl text-grey" style="padding: 0 20rpx">
+      <view>
+        {{deliveryTime.startStr}}
+        <text class="text-lg text-green padding-lr-sm">{{deliveryTime.middleStr}}</text>{{deliveryTime.endStr}}</view>
+    </view>
+    <view class="flex justify-center">
+      <navigator bindtap="enterOrder" data-index='2'  class="btn line-grey radius margin-right" url="/pages/ucenter/order/order" open-type="redirect">查看订单</navigator>
+      <navigator class="btn bg-green radius" url="/pages/index/index" open-type="switchTab">继续逛</navigator>
+    </view>
+  </view>
+
+  <view class="content" wx:if="{{!status}}">
+    <view class="text-lg text-orange padding-top-xl">付款失败</view>
+    <view class="margin-tb-xl text-grey">
+      <view>请在
+        <text class="text-lg text-green padding-lr-sm">{{time}} 分钟</text> 内完成付款</view>
+      <view>否则订单将会被系统取消</view>
+    </view>
+    <view class="flex justify-center">
+      <navigator bindtap="enterOrder" data-index='1' class="btn line-grey radius margin-right" url="/pages/ucenter/order/order" open-type="redirect">查看订单</navigator>
+      <view class="btn bg-green radius" bindtap='payOrder'>重新付款</view>
+    </view>
+  </view>
+</view>

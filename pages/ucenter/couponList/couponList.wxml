@@ -1,0 +1,66 @@
+<view class="container">
+
+  <view class="h">
+    <view class="item {{ status == 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+      <view class="txt">未使用</view>
+    </view>
+    <view class="item {{ status == 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+      <view class="txt">已使用</view>
+    </view>
+    <view class="item {{ status == 2 ? 'active' : ''}}" bindtap="switchTab" data-index="2">
+      <view class="txt">已过期</view>
+    </view>
+  </view>
+
+  <view class="b">
+
+    <view class="coupon-form" wx:if="{{status == 0}}">
+      <view class="input-box">
+        <input class="coupon-sn" placeholder="请输入优惠码" value="{{code}}" bindinput="bindExchange"/>
+        <view class="iconfont iconshanchu input-clear-icon" wx:if="{{ code.length > 0 }}" bindtap="clearExchange"></view>
+      </view>
+      <view class="add-btn" bindtap='goExchange'>兑换</view>
+    </view>
+
+    <view class="help" wx:if="{{status == 0}}" bindtap="enterCouponExplain"><text class="iconfont iconshiyongshuoming"></text>使用说明</view>
+
+  </view>
+
+</view>
+
+<scroll-view class="coupon-list" scroll-y="true" bindscrolltolower="scrollBottom" scroll-top="{{scrollTop}}" style="height: {{ mainWrapHeight }}px">
+
+  <view class="coupon-list-item" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+    <view class="coupon-item-l">
+      <image wx:if="{{status == 0}}" class="coupon-img" src="{{item.type == 1 ? 'https://niuniu-wx.oss-cn-beijing.aliyuncs.com/coupon-icon-1.png' : item.type == 0 ? 'https://niuniu-wx.oss-cn-beijing.aliyuncs.com/coupon-icon-2.png' : 'https://niuniu-wx.oss-cn-beijing.aliyuncs.com/coupon-icon-3.png'}}"></image>
+      <image wx:else class="coupon-img" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/coupon-icon-unable.png"></image>
+      <view class="coupon-item-l-con">
+        <view class="l-price"><text>￥</text>{{item.discount}}</view>
+        <view class="l-tip">满{{item.min}}元可使用</view>
+      </view>
+    </view>
+
+    <view class="coupon-item-r">
+      <view class="item-r-title">
+        <view wx:if="{{status == 0}}" class="r-coupon-quantity {{item.type == 1 ? 'background-color1' : ''}} {{item.type == 0 ? 'background-color2' : ''}} {{item.type == 2 ? 'background-color3' : ''}}">{{item.tag}}</view>
+        <view wx:else class="r-coupon-quantity background-color-unable">{{item.tag}}</view>
+        <text>{{item.name}}</text>
+      </view>
+      <view class="use-time">{{item.startTime}} - {{item.endTime}}</view>
+      <view class="item-r-b">
+        <view class="coupon-tip">{{item.desc}}</view>
+        <view wx:if="{{status == 0}}" bindtap="enterCategory" class="use-btn {{item.type == 1 ? 'border-color1 font-color1' : ''}} {{item.type == 0 ? 'border-color2 font-color2' : ''}} {{item.type == 2 ? 'border-color3 font-color3' : ''}}">立即使用</view>
+      </view>
+    </view>
+
+    <image wx:if="{{status == 1}}" class="unable-use-img" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/unable-use-icon.png"></image>
+    <image wx:if="{{status == 2}}" class="unable-time-img" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/unable-time-icon.png"></image>
+  </view>
+
+  <view wx:if="{{count == 0}}" class="no-coupon-wrap">
+    <image class="no-coupon-wrap-img" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/no-coupon.png"></image>
+    <view class="no-coupon-wrap-p">暂无数据</view>
+  </view>
+  <view class="nodata" wx:if="{{noData}}">没有更多数据啦</view>
+</scroll-view>
+

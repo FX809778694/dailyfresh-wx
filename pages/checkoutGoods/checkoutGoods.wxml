@@ -1,0 +1,15 @@
+<view class="bg-white radius-card margin-sm padding-lr-sm goodsItem">
+  <view wx:for="{{checkedGoodsList}}" wx:key="id" class="padding-tb-sm flex justify-between align-center solid-bottom">
+    <view class="avatar xl">
+      <image src="{{swiperImgPrefix + item.picUrl}}"></image>
+    </view>
+    <view class="center">
+      <view class="margin-bottom-sm">{{item.goodsName}}</view>
+      <view>
+        <text class="text-price text-lg text-orange margin-right-sm">{{item.price}}</text>
+        <text><text class="fontIcon-close text-sm"></text>{{item.number}}</text>
+      </view>
+    </view>
+    <view class="text-price text-xxl text-orange">{{item.total}}</view>
+  </view>
+</view>

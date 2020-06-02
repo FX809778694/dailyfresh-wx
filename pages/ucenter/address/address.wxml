@@ -1,0 +1,25 @@
+<view class="bg-white radius-card padding address" wx:if="{{ addressList.length > 0 }}">
+  <view class="padding-tb flex justify-between align-center address-item" wx:for="{{addressList}}" wx:key="id">
+    <checkbox class="round" wx:if="{{isCheckbox}}" checked="{{item.checked ? true : false}}" data-item-index="{{index}}" bindtap="checkedAddress"></checkbox>
+
+    <view class="content">
+      <view class="flex align-center margin-bottom-xs">
+        <text>{{item.city}}  {{item.addressDetail}}</text>
+        <text class="addr-tag tinyint-tag">{{item.label == 0 ? '家' : item.label == 1 ? '公司' : '学校'}}</text>
+        <text class="addr-tag default-tag" wx:if="{{item.isDefault}}">默认</text>
+      </view>
+      <view style="margin-top: 20rpx">
+        <text class="margin-right-sm address-username">{{item.name}}</text>
+        <text class="address-phone">{{item.tel}}</text>
+      </view>
+    </view>
+
+    <view class="iconfont iconxiugai text-xl" data-id="{{item.id}}" catchtap="editAddress"></view>
+  </view>
+</view>
+
+<view class="empty-data" wx:if="{{ total === 0 }}">
+  <image class="no-address-img" src="https://niuniu-wx.oss-cn-beijing.aliyuncs.com/address-empty.png"></image>
+  <view class="addBtn-no-data" bindtap="addressAdd">新增地址</view>
+</view>
+<view class="addBtn" bindtap="addressAdd" wx:if="{{total !== 0}}">新增收货地址</view>
