@@ -4,7 +4,7 @@ var user = require('./utils/user.js');
 
 App({
   onLaunch: function(e) {
-    // 存储要强参数
+    // 存储邀请参数
     wx.setStorageSync('inviteId', e.query.co);
     wx.getShareInfo({shareTicket:e.shareTicket,
       success: function (res) {
